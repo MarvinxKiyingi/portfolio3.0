@@ -1,0 +1,7 @@
+@import './../../styles/scss/_mixins/breakpoints';
+
+.wrapper {
+    display: flex;
+    justify-content: space-between;
+    padding: var(--space-lg) 0;
+}

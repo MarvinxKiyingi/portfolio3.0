@@ -26,7 +26,11 @@ html {
   font-size: var(--base-font-size);
 }
 
-body {}
+body {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 var(--space-lg);
+}
 
 a {
   color: inherit;
