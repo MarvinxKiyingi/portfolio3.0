@@ -5,10 +5,10 @@ import SocialLinks from '../SocialLinks/SocialLinks';
 
 const NavBar = () => {
   return (
-    <div className={styles.wrapper}>
+    <section className={styles.wrapper}>
       <Initials />
       <SocialLinks />
-    </div>
+    </section>
   );
 };
 

@@ -4,4 +4,9 @@
     display: flex;
     justify-content: space-between;
     padding: var(--space-lg) 0;
+
+    @include breakpoint(xl){
+        padding: 104px 0 0;
+    }
+    
 }

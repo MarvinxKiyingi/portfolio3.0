@@ -6,6 +6,9 @@
 :root {
   // Max-width
   --max-width: 1536px;
+
+  // Navbar
+  --navBar-height: 90.72px;
 }
 
 * {
@@ -44,4 +47,3 @@ a {
   color: inherit;
   text-decoration: none;
 }
-
