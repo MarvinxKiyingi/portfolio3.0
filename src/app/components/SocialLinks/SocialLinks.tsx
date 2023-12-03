@@ -1,15 +1,20 @@
 import React from 'react';
 import styles from './SocialLinks.module.scss';
+import { INavItem } from '../NavBar/NavBar';
 
-const SocialLinks = () => {
+type ISocialLinks = {
+  navItems: INavItem[];
+};
+
+const SocialLinks = (props: ISocialLinks) => {
+  const { navItems } = props;
   return (
     <div className={styles.wrapper}>
-      <a className='navigation' href=''>
-        Github
-      </a>
-      <a className='navigation' href=''>
-        Linkedin
-      </a>
+      {navItems.map(({ _key, linkUrl, name }: INavItem) => (
+        <a key={_key} className='navigation' href={linkUrl || ''}>
+          {name}
+        </a>
+      ))}
     </div>
   );
 };
