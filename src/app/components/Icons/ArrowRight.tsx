@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Arrow = () => {
+const ArrowRight = () => {
   return (
     <svg xmlns='http://www.w3.org/2000/svg' width='24' height='21' fill='none'>
       <path
@@ -9,31 +9,31 @@ const Arrow = () => {
       />
       <path
         fill='#000'
-        fill-opacity='.2'
+        fillOpacity='.2'
         d='M0 9.01154v2.99996h18.3146l-7.002 6.9347L13.4097 21 24 10.5115 13.4097 0l-2.0971 2.1 7.002 6.91154H0Z'
       />
       <path
         fill='#000'
-        fill-opacity='.2'
+        fillOpacity='.2'
         d='M0 9.01154v2.99996h18.3146l-7.002 6.9347L13.4097 21 24 10.5115 13.4097 0l-2.0971 2.1 7.002 6.91154H0Z'
       />
       <path
         fill='#000'
-        fill-opacity='.2'
+        fillOpacity='.2'
         d='M0 9.01154v2.99996h18.3146l-7.002 6.9347L13.4097 21 24 10.5115 13.4097 0l-2.0971 2.1 7.002 6.91154H0Z'
       />
       <path
         fill='#000'
-        fill-opacity='.2'
+        fillOpacity='.2'
         d='M0 9.01154v2.99996h18.3146l-7.002 6.9347L13.4097 21 24 10.5115 13.4097 0l-2.0971 2.1 7.002 6.91154H0Z'
       />
       <path
         fill='#000'
-        fill-opacity='.2'
+        fillOpacity='.2'
         d='M0 9.01154v2.99996h18.3146l-7.002 6.9347L13.4097 21 24 10.5115 13.4097 0l-2.0971 2.1 7.002 6.91154H0Z'
       />
     </svg>
   );
 };
 
-export default Arrow;
+export default ArrowRight;

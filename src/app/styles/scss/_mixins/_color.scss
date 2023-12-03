@@ -1,24 +1,29 @@
 :root {
-    // Colors
-    --primary-color: #00249C;
-    --text-color: #181717;
-    --bg-color: #F3F3F3;
-    --component-bg-color: rgba(96, 96, 96, 0.50);
-  }
-  
-  @media (prefers-color-scheme: dark) {
-    :root {
-      // Colors
-      --primary-color: #00249C;
-      --text-color: #e3f5fc;
-      --bg-color:  linear-gradient(0deg, rgba(0, 0, 0, 0.20) 0%, rgba(0, 0, 0, 0.20) 100%), linear-gradient(0deg, rgba(0, 0, 0, 0.20) 0%, rgba(0, 0, 0, 0.20) 100%), linear-gradient(0deg, rgba(0, 0, 0, 0.20) 0%, rgba(0, 0, 0, 0.20) 100%), linear-gradient(0deg, rgba(0, 0, 0, 0.20) 0%, rgba(0, 0, 0, 0.20) 100%), linear-gradient(0deg, rgba(0, 0, 0, 0.20) 0%, rgba(0, 0, 0, 0.20) 100%), #181717;
-      --component-bg-color: rgba(255, 255, 255, 0.50);
-      ;
-    }
-  }
+  // Colors
+  --main-black: rgba(24, 23, 23, 1);
+  --main-white: rgba(255, 255, 255, 1);
+  --main-grey: rgba(96, 96, 96, 1);
+  --main-blue: rgba(0, 36, 156, 1);
 
-  @media (prefers-color-scheme: dark) {
-    html {
-      color-scheme: dark;
-    }
+  --text-color: var(--main-black);
+  --bg-color: #F3F3F3;
+  --component-bg-color: rgba(96, 96, 96, 0.50);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    // Colors
+    --main-grey: #86868B;
+
+    --text-color: #e3f5fc;
+    --bg-color: var(--main-black);
+    --component-bg-color: rgba(255, 255, 255, 0.50);
+    ;
   }
+}
+
+@media (prefers-color-scheme: dark) {
+  html {
+    color-scheme: dark;
+  }
+}

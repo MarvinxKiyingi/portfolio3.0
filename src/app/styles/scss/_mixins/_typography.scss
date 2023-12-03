@@ -26,11 +26,15 @@
 
 .navigation {
     font-family: var(--font-dn-sans);
-    font-size: 21px;
+    font-size: 16px;
     font-style: normal;
     font-weight: 500;
     line-height: 121%;
     letter-spacing: -0.63px;
+
+    @include breakpoint(md) {
+        font-size: 21px;
+    }
 }
 
 .body {

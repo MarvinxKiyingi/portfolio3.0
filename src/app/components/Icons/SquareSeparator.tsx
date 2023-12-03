@@ -10,11 +10,11 @@ const SquareSeparator = () => {
       xmlns='http://www.w3.org/2000/svg'
     >
       <rect y='0.5' width='4' height='4' fill='#181717' />
-      <rect y='0.5' width='4' height='4' fill='#181717' fill-opacity='0.2' />
-      <rect y='0.5' width='4' height='4' fill='#181717' fill-opacity='0.2' />
-      <rect y='0.5' width='4' height='4' fill='#181717' fill-opacity='0.2' />
-      <rect y='0.5' width='4' height='4' fill='#181717' fill-opacity='0.2' />
-      <rect y='0.5' width='4' height='4' fill='#181717' fill-opacity='0.2' />
+      <rect y='0.5' width='4' height='4' fill='#181717' fillOpacity='0.2' />
+      <rect y='0.5' width='4' height='4' fill='#181717' fillOpacity='0.2' />
+      <rect y='0.5' width='4' height='4' fill='#181717' fillOpacity='0.2' />
+      <rect y='0.5' width='4' height='4' fill='#181717' fillOpacity='0.2' />
+      <rect y='0.5' width='4' height='4' fill='#181717' fillOpacity='0.2' />
     </svg>
   );
 };
