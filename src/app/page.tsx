@@ -4,6 +4,7 @@ import NavBar from './components/NavBar/NavBar';
 import ArrowDown from './components/Icons/ArrowDown';
 import { client } from './utils/sanity/client';
 import { PortableText } from '@portabletext/react';
+import NavPill from './components/NavPill/NavPill';
 
 type BlockList = {
   richTextEditor: RichTextEditor[];
@@ -53,11 +54,11 @@ export default async function Home() {
           </p> */}
           <PortableText value={descriptionRichTextBlocks} />
         </section>
-        {/* //Todo: Un-comment the line bellow once the "NavPill" is in place  */}
-        {/* <button className={styles.button}>
+        <button className={styles.button}>
           <ArrowDown />
-        </button> */}
+        </button>
       </div>
+      <NavPill />
     </main>
   );
 }

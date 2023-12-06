@@ -1,0 +1,11 @@
+@import './../../styles/scss/_mixins/breakpoints';
+
+.wrapper {
+  display: flex;
+  padding: 5px 12px;
+  background-color: var(--bg-color);
+  color: var(--text-color-primary);
+  justify-content: center;
+  align-items: center;
+  border-radius: var(--border-radius);
+}
