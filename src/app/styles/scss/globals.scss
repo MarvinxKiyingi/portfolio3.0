@@ -5,7 +5,7 @@
 
 :root {
   // Max-width
-  --max-width: 1536px;
+  --max-width: 1920px;
 
   // Navbar
   --navBar-height: 90.72px;
@@ -39,7 +39,7 @@ svg {
   color: var(--text-color);
 
   path {
-    fill: var(--text-color)
+    fill: var(--text-color);
   }
 }
 
@@ -48,15 +48,15 @@ a {
   text-decoration: none;
 }
 
-//temporary styles 
-p{
+//temporary styles
+p {
   font-size: 14px;
 
   @include breakpoint(md-mini) {
     font-size: 18px;
-}
+  }
 
-@include breakpoint(lg) {
+  @include breakpoint(lg) {
     font-size: 22px;
-}
+  }
 }

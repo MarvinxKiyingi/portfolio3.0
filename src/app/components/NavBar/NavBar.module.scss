@@ -9,7 +9,7 @@
   height: fit-content;
   align-items: center;
 
-  @include breakpoint(xl) {
+  @include breakpoint(xxl) {
     padding: 48px 0 0;
   }
 }
