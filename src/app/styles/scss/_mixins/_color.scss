@@ -5,20 +5,22 @@
   --main-grey: rgba(96, 96, 96, 1);
   --main-blue: rgba(0, 36, 156, 1);
 
-  --text-color: var(--main-black);
-  --bg-color: #F3F3F3;
-  --component-bg-color: rgba(96, 96, 96, 0.50);
+  --text-color-primary: var(--main-black);
+  --text-color-secondary: var(--main-white);
+  --bg-color: #f3f3f3;
+  --component-bg-color: rgba(96, 96, 96, 0.5);
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
     // Colors
-    --main-grey: #86868B;
+    --main-grey: #86868b;
 
-    --text-color: #e3f5fc;
+    --text-color-primary: #e3f5fc;
+    --text-color-secondary: var(--main-black);
+
     --bg-color: var(--main-black);
-    --component-bg-color: rgba(255, 255, 255, 0.50);
-    ;
+    --component-bg-color: rgba(255, 255, 255, 0.5);
   }
 }
 

@@ -9,6 +9,9 @@
 
   // Navbar
   --navBar-height: 90.72px;
+
+  // Navbar
+  --border-radius: 50px;
 }
 
 * {
@@ -25,7 +28,7 @@ body {
 
 html {
   background-color: var(--bg-color);
-  color: var(--text-color);
+  color: var(--text-color-primary);
   font-size: var(--base-font-size);
 }
 
@@ -36,10 +39,10 @@ body {
 }
 
 svg {
-  color: var(--text-color);
+  color: var(--text-color-primary);
 
   path {
-    fill: var(--text-color);
+    fill: var(--text-color-primary);
   }
 }
 
