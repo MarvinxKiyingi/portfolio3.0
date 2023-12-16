@@ -69,3 +69,11 @@
     transform: translateY(-10px);
   }
 }
+
+.workWrapper {
+  margin-top: var(--space-md);
+
+  @include breakpoint(md) {
+    margin-top: calc(var(--base-spacing) * 8);
+  }
+}

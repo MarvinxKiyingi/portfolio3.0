@@ -5,6 +5,7 @@ import ArrowDown from './components/Icons/ArrowDown';
 import { client } from './utils/sanity/client';
 import { PortableText } from '@portabletext/react';
 import NavPill from './components/NavPill/NavPill';
+import Work from './components/Projects/Projects';
 
 type BlockList = {
   richTextEditor: RichTextEditor[];
@@ -54,6 +55,10 @@ export default async function Home() {
           </p> */}
           <PortableText value={descriptionRichTextBlocks} />
         </section>
+      </div>
+
+      <div className={styles.workWrapper}>
+        <Work />
       </div>
       <NavPill />
     </main>
