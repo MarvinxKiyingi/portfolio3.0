@@ -7,8 +7,8 @@ const NavPill = () => {
   return (
     <div className={styles.wrapper}>
       View:
-      {navItems.map((navItem, inx) => (
-        <PillButton key={inx} {...navItem} />
+      {navItems.map((navItem, indx) => (
+        <PillButton key={indx} {...navItem} />
       ))}
     </div>
   );
