@@ -54,9 +54,6 @@ export default async function Home() {
           </p> */}
           <PortableText value={descriptionRichTextBlocks} />
         </section>
-        <button className={styles.button}>
-          <ArrowDown />
-        </button>
       </div>
       <NavPill />
     </main>
