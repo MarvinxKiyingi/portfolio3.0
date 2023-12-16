@@ -1,37 +1,39 @@
 @import './styles/scss/_mixins/breakpoints';
 
 .hero {
-    height: 100dvh;
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    grid-template-rows: repeat(8, 1fr);
-    gap:calc(var(--base-spacing)*3);
+  height: 100dvh;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(8, 1fr);
+  gap: calc(var(--base-spacing) * 3);
 
-
-    @include breakpoint(md) {
-        grid-template-columns: repeat(12, 1fr);
-        grid-template-rows: repeat(12, 1fr);
-    }
+  @include breakpoint(md) {
+    grid-template-columns: repeat(12, 1fr);
+    grid-template-rows: repeat(12, 1fr);
+  }
 }
 
 .textWrapper {
-    grid-column: 3/-1;
-    grid-row: 4/-2;
-    gap: calc(var(--base-spacing)*3);
-    //temporary styles 
-    display: flex;
-    align-items: flex-end;
-    text-align: justify;
-    color: var(--main-grey);
+  grid-column: 3/-1;
+  grid-row: 4/-2;
+  gap: calc(var(--base-spacing) * 3);
+  //temporary styles
+  display: flex;
+  align-items: flex-end;
+  text-align: justify;
+  color: var(--main-grey);
 
+  @include breakpoint(xs) {
+    grid-column: 2/-1;
+    grid-row: 4/-3;
+  }
 
-    @include breakpoint(md) {
-        grid-column: 8/-1;
-        grid-row: 9/12;
-        //temporary styles 
-        text-align: start;
-
-    }
+  @include breakpoint(md) {
+    grid-column: 8/-1;
+    grid-row: 9/12;
+    //temporary styles
+    text-align: start;
+  }
 }
 
 // .description {
@@ -40,7 +42,6 @@
 //     font-size: 14px;
 //     color: var(--main-grey);
 
-  
 //     @include breakpoint(md-mini) {
 //         font-size: 18px;
 //     }
@@ -49,39 +50,22 @@
 //         font-size: 22px;
 //     }
 
-  
 // }
 
-.button {
-    all: unset;
-    position: absolute;
-    bottom: 24px;
-    animation: jump 2s infinite;
-
-    &:hover {
-        cursor: pointer;
-    }
-
-    @include breakpoint(md) {
-        display: none;
-    }
-}
-
 @keyframes jump {
+  0%,
+  20%,
+  50%,
+  80%,
+  100% {
+    transform: translateY(0);
+  }
 
-    0%,
-    20%,
-    50%,
-    80%,
-    100% {
-        transform: translateY(0);
-    }
+  40% {
+    transform: translateY(-20px);
+  }
 
-    40% {
-        transform: translateY(-20px);
-    }
-
-    60% {
-        transform: translateY(-10px);
-    }
+  60% {
+    transform: translateY(-10px);
+  }
 }
