@@ -3,6 +3,7 @@ import styles from './NavBar.module.scss';
 import Initials from '../Icons/Initials';
 import SocialLinks from '../SocialLinks/SocialLinks';
 import { client } from '@/app/utils/sanity/client';
+import Link from 'next/link';
 
 export type INavItem = {
   name: string;
@@ -34,7 +35,9 @@ const NavBar = async () => {
 
   return (
     <section className={styles.wrapper}>
-      <Initials />
+      <Link href='/' className={styles.initialsWrapper}>
+        <Initials />
+      </Link>
       <SocialLinks navItems={navItems} />
     </section>
   );
