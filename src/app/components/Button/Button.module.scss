@@ -1,0 +1,16 @@
+@import './../../styles/scss/_mixins/breakpoints';
+
+.default {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 5px 12px;
+  border-radius: var(--border-radius);
+  background-color: var(--button-default-bg-color);
+  color: var(--text-color-primary);
+}
+
+.outlinedWithTint {
+  border: 1px solid var(--button-outlinedWithTint-border-color);
+  background-color: var(--button-outlinedWithTint-bg-color);
+}

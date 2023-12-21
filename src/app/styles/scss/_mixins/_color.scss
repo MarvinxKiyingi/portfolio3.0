@@ -9,6 +9,14 @@
   --text-color-secondary: var(--main-white);
   --bg-color: #f3f3f3;
   --component-bg-color: rgba(96, 96, 96, 0.5);
+
+  --opacity: 1;
+
+  // component specific
+  // Button
+  --button-default-bg-color: var(--main-white);
+  --button-outlinedWithTint-bg-color: rgba(255, 255, 255, 0.5);
+  --button-outlinedWithTint-border-color: rgba(96, 96, 96, 0.5);
 }
 
 @media (prefers-color-scheme: dark) {
@@ -21,6 +29,13 @@
 
     --bg-color: var(--main-black);
     --component-bg-color: rgba(255, 255, 255, 0.5);
+
+    --opacity: 0.9;
+
+    // component specific
+    // Button
+    --button-default-bg-color: var(--main-black);
+    --button-outlinedWithTint-bg-color: rgba(96, 96, 96, 0.5);
   }
 }
 

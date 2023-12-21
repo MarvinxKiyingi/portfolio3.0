@@ -1,6 +1,6 @@
 import React from 'react';
 import styles from './NavPill.module.scss';
-import PillButton from '../PillButton/PillButton';
+import Button from '../Button/Button';
 
 const NavPill = () => {
   const navItems = [{ to: '/', text: 'Work' }];
@@ -8,7 +8,7 @@ const NavPill = () => {
     <div className={styles.wrapper}>
       View:
       {navItems.map((navItem, indx) => (
-        <PillButton key={indx} {...navItem} />
+        <Button key={indx} {...navItem} />
       ))}
     </div>
   );
