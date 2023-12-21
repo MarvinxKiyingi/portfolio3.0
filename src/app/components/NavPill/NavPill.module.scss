@@ -1,7 +1,7 @@
 @import './../../styles/scss/_mixins/breakpoints';
 
 .wrapper {
-  position: absolute;
+  position: fixed;
   left: 50%;
   right: 0;
   transform: translate(-50%, -50%);
