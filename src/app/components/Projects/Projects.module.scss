@@ -1,4 +1,11 @@
+@import './../../styles/scss/_mixins/breakpoints';
+
 .wrapper {
   display: flex;
   flex-direction: column;
+  gap: var(--space-lg);
+
+  @include breakpoint(md) {
+    gap: calc(var(--base-spacing) * 12);
+  }
 }

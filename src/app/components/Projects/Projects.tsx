@@ -21,9 +21,11 @@ export type IProject = {
   pageUrl: string;
   _id: string;
   desktopImage: IDesktopImage;
+  desktopImageAlt: string;
   _createdAt: string;
   githubUrl?: string;
   mobileImage?: IMobileImage;
+  mobileImageAlt: string;
   gitHubLabel?: string;
   tags?: ITag[];
   author?: IAsset;
