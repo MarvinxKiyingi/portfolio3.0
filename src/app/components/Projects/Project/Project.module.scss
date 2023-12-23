@@ -1,4 +1,55 @@
+@import './../../../styles/scss/_mixins/breakpoints';
+
 .wrapper {
   display: flex;
   flex-direction: column;
+  gap: var(--space-lg);
+  padding-bottom: calc(var(--base-spacing) * 6);
+
+  &:last-of-type {
+    padding-bottom: unset;
+  }
+}
+
+.heading {
+  font-size: 24px;
+  font-weight: 500;
+  text-transform: uppercase;
+  color: var(--text-color-primary);
+}
+
+.isMobile {
+  position: relative;
+  opacity: var(--opacity);
+  aspect-ratio: 4/5;
+
+  img {
+    aspect-ratio: 4/5;
+    object-fit: cover;
+    border-radius: 10px;
+  }
+
+  @include breakpoint(lg) {
+    display: none;
+  }
+}
+
+.projectButton {
+  display: flex;
+  gap: var(--base-spacing);
+  position: absolute;
+  top: var(--base-spacing);
+  left: var(--base-spacing);
+  backdrop-filter: blur(4px);
+}
+
+.isDesktop {
+  position: relative !important;
+  aspect-ratio: 16/9;
+  display: none;
+  opacity: var(--opacity);
+
+  @include breakpoint(lg) {
+    display: initial;
+  }
 }
