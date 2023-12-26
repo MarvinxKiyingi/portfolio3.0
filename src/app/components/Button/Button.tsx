@@ -3,21 +3,23 @@ import styles from './Button.module.scss';
 import Link from 'next/link';
 import classNames from 'classnames';
 import Cross from '../Icons/Cross';
+import Minus from '../Icons/Minus';
 
 type IButton = {
-  to?: string;
-  as?: 'button' | 'link';
+  to?: string | undefined;
+  as?: 'link' | 'button';
   text: string;
   variant?: 'default' | 'outlinedWithTint';
   className?: string;
   onClick?: () => void;
-  icon?: 'cross';
+  icon?: 'cross' | 'minus';
 };
 
 const Button = ({
   variant = 'default',
   onClick,
-  to = '',
+  to,
+  as = 'link',
   text,
   className,
   icon,
@@ -31,19 +33,30 @@ const Button = ({
     switch (icon) {
       case 'cross':
         return <Cross />;
+      case 'minus':
+        return <Minus />;
 
       default:
         return null; // If no matching icon is found, return null or another default behavior
     }
   };
 
-  return (
-    <Link onClick={onClick} href={to} className={buttonClassName}>
-      {text}
-      {icon && renderIcon()}
-      {/* {icon === 'cross' && <Cross />} */}
-    </Link>
-  );
+  switch (as) {
+    case 'link':
+      return (
+        <Link href={to || ''} className={buttonClassName}>
+          {text}
+          {icon && renderIcon()}
+        </Link>
+      );
+    case 'button':
+      return (
+        <button onClick={onClick} className={buttonClassName}>
+          {text}
+          {icon && renderIcon()}
+        </button>
+      );
+  }
 };
 
 export default Button;

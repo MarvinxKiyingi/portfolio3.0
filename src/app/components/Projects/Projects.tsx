@@ -32,9 +32,13 @@ export type IProject = {
 };
 
 export type ITag = {
-  _ref: string;
+  _rev: string;
   _type: string;
-  _key: string;
+  name: string;
+  _id: string;
+  _updatedAt: string;
+  _createdAt: string;
+  author?: IAuthor;
 };
 
 export type IMobileImage = {
@@ -70,9 +74,14 @@ export type IAsset = {
   _ref: string;
 };
 
+type IAuthor = {
+  _ref: string;
+  _type: string;
+};
+
 const Projects = async () => {
   const work = await client.fetch<IWork>(
-    `*[name == "Work"][0]{blockList[0]{listOfProjects[]->}}`
+    `*[name == "Work"][0]{blockList[0]{listOfProjects[]->{...,tags[]->}}}`
   );
   const { listOfProjects } = work.blockList;
 
