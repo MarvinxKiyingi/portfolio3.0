@@ -1,0 +1,20 @@
+@import './../../styles/scss/_mixins/breakpoints';
+
+.wrapper {
+  display: grid;
+  gap: 32px;
+
+  .copyrightWrapper {
+    display: flex;
+    justify-content: space-between;
+    grid-template-columns: 2fr 1fr;
+    padding: 0px 0px calc(var(--base-spacing) * 14) 0px;
+
+    .copyright {
+      display: grid;
+      align-self: end;
+      color: var(--main-blue);
+      font-size: 21px;
+    }
+  }
+}
