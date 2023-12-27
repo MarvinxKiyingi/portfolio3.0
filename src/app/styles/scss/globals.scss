@@ -68,8 +68,4 @@ p {
   @include breakpoint(md-mini) {
     font-size: 18px;
   }
-
-  @include breakpoint(lg) {
-    font-size: 22px;
-  }
 }

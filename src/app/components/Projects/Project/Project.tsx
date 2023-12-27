@@ -33,12 +33,21 @@ const Project = ({ project, indx }: IProjectProps) => {
 
   return (
     <div className={styles.wrapper}>
-      <h1 className={`.heading-1 ${styles.heading}`}>{`0${
+      <h1 className={`${styles.heading} ${styles.isMobile} `}>{`0${
         indx + 1
       } / ${name}`}</h1>
 
-      <div className={styles.isMobile}>
-        <Image alt={isMobile.alt} src={isMobile.url} fill />
+      <div className={styles.container}>
+        <h1 className={`${styles.heading} ${styles.isDesktop}`}>{`0${
+          indx + 1
+        } / ${name}`}</h1>
+
+        <Image
+          alt={isMobile.alt}
+          src={isMobile.url}
+          className={styles.isMobile}
+          fill
+        />
 
         <Button
           className={styles.projectButton}
@@ -96,15 +105,14 @@ const Project = ({ project, indx }: IProjectProps) => {
             </div>
           </div>
         </div>
-      </div>
 
-      <Image
-        className={styles.isDesktop}
-        alt={isDesktop.alt}
-        src={isDesktop.url}
-        sizes=''
-        fill
-      />
+        <Image
+          className={styles.isDesktop}
+          alt={isDesktop.alt}
+          src={isDesktop.url}
+          fill
+        />
+      </div>
     </div>
   );
 };
