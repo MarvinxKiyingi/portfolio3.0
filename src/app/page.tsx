@@ -1,7 +1,6 @@
 import './styles/scss/globals.scss';
 import styles from './page.module.scss';
 import NavBar from './components/NavBar/NavBar';
-import ArrowDown from './components/Icons/ArrowDown';
 import { client } from './utils/sanity/client';
 import { PortableText } from '@portabletext/react';
 import NavPill from './components/NavPill/NavPill';
@@ -49,10 +48,6 @@ export default async function Home() {
         <NavBar />
 
         <section className={styles.textWrapper}>
-          {/* //Todo: Customize PortableText's styles with the `components`prop  */}
-          {/* //Todo: Once above is done, remove the example comment bellow   */}
-          {/* <p className={`sub-text ${styles.description}`}>
-          </p> */}
           <PortableText value={descriptionRichTextBlocks} />
         </section>
       </div>

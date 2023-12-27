@@ -3,6 +3,7 @@
 .wrapper {
   display: grid;
   gap: 32px;
+  padding-top: var(--space-md);
 
   .copyrightWrapper {
     display: flex;
