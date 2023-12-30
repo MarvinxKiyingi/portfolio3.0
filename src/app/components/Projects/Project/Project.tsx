@@ -86,21 +86,17 @@ const Project = ({ project, indx }: IProjectProps) => {
 
             <div className={styles.LinksWrapper}>
               {project.pageUrl && (
-                <div className={styles.LinkWrapper}>
-                  <Link href={project.pageUrl} className={styles.Link}>
-                    {project.pageLabel}
-                  </Link>
+                <Link href={project.pageUrl} className={styles.LinkWrapper}>
+                  <span className={styles.Link}>{project.pageLabel}</span>
                   <OpenPage />
-                </div>
+                </Link>
               )}
 
               {project.githubUrl && (
-                <div className={styles.LinkWrapper}>
-                  <Link href={project.githubUrl} className={styles.Link}>
-                    {project.gitHubLabel}
-                  </Link>
+                <Link href={project.githubUrl} className={styles.LinkWrapper}>
+                  <span className={styles.Link}>{project.gitHubLabel}</span>
                   <Github />
-                </div>
+                </Link>
               )}
             </div>
           </div>
