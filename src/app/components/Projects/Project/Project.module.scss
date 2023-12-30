@@ -10,10 +10,6 @@
     grid-row-gap: 32px;
     grid-template-columns: repeat(12, 1fr);
   }
-
-  &:last-of-type {
-    padding-bottom: unset;
-  }
 }
 
 .heading {
@@ -87,7 +83,7 @@
       display: grid;
       padding: unset;
       grid-column: 1/4;
-      grid-row: 2/-1;
+      grid-row: 2/-2;
       background-color: unset;
     }
 
@@ -104,6 +100,7 @@
 
       .description {
         font-size: 20px;
+        color: var(--main-grey);
       }
 
       .tagsWrapper {
@@ -111,6 +108,7 @@
         flex-direction: column;
 
         .tagsTitle {
+          font-weight: 500;
         }
 
         .tags {

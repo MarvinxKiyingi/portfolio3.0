@@ -73,7 +73,7 @@ const Project = ({ project, indx }: IProjectProps) => {
 
             {project.tags && (
               <div className={styles.tagsWrapper}>
-                <h2 className={`sub-text ${styles.tagsTitle}`}>Built with</h2>
+                <h2 className={`sub-text ${styles.tagsTitle}`}>Built with:</h2>
                 <div className={styles.tags}>
                   {project.tags?.map((tag) => (
                     <p key={tag._id} className={styles.tag}>
