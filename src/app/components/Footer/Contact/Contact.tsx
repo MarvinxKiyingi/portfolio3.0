@@ -9,7 +9,7 @@ const Contact = () => {
           I am thrilled to answer any questions you have
         </h3>
       </div>
-      <address className={`${styles.email} link`}>
+      <address className={`${styles.email} heading-2`}>
         <a href='mailto:marvinxkiyingi@gmail.com'>marvinxkiyingi@gmail.com</a>
       </address>
     </div>

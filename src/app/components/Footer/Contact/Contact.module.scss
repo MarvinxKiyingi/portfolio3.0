@@ -19,9 +19,9 @@
   }
 
   .email {
+    text-decoration: underline;
     @include breakpoint(md) {
       grid-column: -6/-2;
-      font-size: 32px;
       text-align: end;
     }
   }
