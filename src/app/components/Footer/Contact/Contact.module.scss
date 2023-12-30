@@ -1,0 +1,28 @@
+@import './../../../styles/scss/_mixins/breakpoints';
+
+.wrapper {
+  display: grid;
+  grid-row-gap: calc(var(--base-spacing) * 7);
+  padding-top: calc(var(--base-spacing) * 7);
+  border-top: 1.5px solid var(--main-black);
+
+  @include breakpoint(md) {
+    grid-row-gap: calc(var(--base-spacing) * 8);
+    padding-top: calc(var(--base-spacing) * 8);
+    grid-template-columns: repeat(12, 1fr);
+  }
+
+  .titleWrapper {
+    @include breakpoint(md) {
+      grid-column: 1/5;
+    }
+  }
+
+  .email {
+    @include breakpoint(md) {
+      grid-column: -6/-2;
+      font-size: 32px;
+      text-align: end;
+    }
+  }
+}
