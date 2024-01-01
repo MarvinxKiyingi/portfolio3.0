@@ -86,7 +86,7 @@ const Projects = async () => {
   const { listOfProjects } = work.blockList;
 
   return (
-    <div className={styles.wrapper}>
+    <div className={styles.wrapper} id='Work'>
       {listOfProjects.map((project, indx) => (
         <Project key={project._id} project={project} indx={indx} />
       ))}

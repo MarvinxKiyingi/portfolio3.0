@@ -1,9 +1,15 @@
+'use client';
 import React from 'react';
 import styles from './NavPill.module.scss';
 import Button from '../Button/Button';
+import { usePathname } from 'next/navigation';
 
 const NavPill = () => {
-  const navItems = [{ to: '/', text: 'Work' }];
+  const pathname = usePathname();
+  const navItems = [
+    { to: pathname === '/' ? '#Work' : pathname, text: 'Work' },
+  ];
+
   return (
     <div className={styles.wrapper}>
       View:
