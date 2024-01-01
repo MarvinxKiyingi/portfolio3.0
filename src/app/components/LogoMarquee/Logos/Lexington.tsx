@@ -11,7 +11,7 @@ const Lexington = () => {
         fill='none'
         xmlns='http://www.w3.org/2000/svg'
       >
-        <g clip-path='url(#clip0_1094_3926)'>
+        <g clipPath='url(#clip0_1094_3926)'>
           <path
             d='M2.93466 1.04349H0V0.521729H8.86296V1.04349H5.92816V22.9565H9.59663C15.2314 22.9565 16.9922 22.1413 16.9922 15.9783H17.4617V23.4781H0V22.9565H2.93466V1.04349Z'
             fill='black'

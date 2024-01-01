@@ -7,7 +7,7 @@ import Grandpa from './Logos/Grandpa';
 import JLinderberg from './Logos/JLinderberg';
 import Hestra from './Logos/Hestra';
 import Lexington from './Logos/Lexington';
-import Mayadelorez from './Logos/Mayadelorez';
+import Mayadelorez from './Logos/MayaDelorez';
 import Aco from './Logos/Aco';
 import Attendo from './Logos/Attendo';
 
