@@ -20,6 +20,7 @@ const LogoMarquee = async () => {
         autoFill
         gradient
         gradientColor='#f3f3f3'
+        gradientWidth={133}
       >
         <div className={styles.marqueeContentWrapper}>
           <Grandpa />
