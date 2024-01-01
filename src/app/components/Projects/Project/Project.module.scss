@@ -7,7 +7,7 @@
   padding-bottom: calc(var(--base-spacing) * 6);
 
   @include breakpoint(lg) {
-    grid-row-gap: 32px;
+    grid-row-gap: calc(var(--base-spacing) * 6);
     grid-template-columns: repeat(12, 1fr);
   }
 }

@@ -53,9 +53,12 @@
 }
 
 .workWrapper {
+  display: grid;
+  gap: calc(var(--base-spacing) * 6);
   margin-top: var(--space-md);
 
   @include breakpoint(md) {
+    gap: calc(var(--base-spacing) * 12);
     margin-top: calc(var(--base-spacing) * 8);
   }
 }

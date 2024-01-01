@@ -5,6 +5,7 @@ import { client } from './utils/sanity/client';
 import { PortableText } from '@portabletext/react';
 import NavPill from './components/NavPill/NavPill';
 import Work from './components/Projects/Projects';
+import LogoMarquee from './components/LogoMarquee/LogoMarquee';
 
 type BlockList = {
   richTextEditor: RichTextEditor[];
@@ -53,6 +54,7 @@ export default async function Home() {
       </div>
 
       <div className={styles.workWrapper}>
+        <LogoMarquee />
         <Work />
       </div>
       <NavPill />
