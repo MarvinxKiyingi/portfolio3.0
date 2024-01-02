@@ -24,7 +24,7 @@
     overflow: hidden;
 
     @include breakpoint(md) {
-      grid-column: -6/-2;
+      grid-column: -7/-2;
       text-align: end;
     }
   }
