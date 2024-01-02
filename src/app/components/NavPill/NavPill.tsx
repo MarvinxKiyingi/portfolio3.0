@@ -1,12 +1,12 @@
 'use client';
-import React from 'react';
+import React, { useState } from 'react';
 import styles from './NavPill.module.scss';
 import Button from '../Button/Button';
+import { usePathname } from 'next/navigation';
 
 const NavPill = () => {
-  const pathname = window.location.pathname;
-  console.log('pathname:', pathname);
-  const navigateTo = pathname === '/' ? '#Work' : pathname;
+  const pathname = usePathname();
+  const navigateTo = pathname === '/' ? '#Work' : '/';
   const navItems = [{ to: navigateTo, text: 'Work' }];
 
   return (
