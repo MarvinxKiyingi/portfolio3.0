@@ -3,10 +3,10 @@
   --base-spacing: 8px;
 
   /* spacing values */
-  --space-xs: calc(var(--base-spacing)/2);
+  --space-xs: calc(var(--base-spacing) / 2);
   --space-sm: var(--base-spacing);
-     --space-md: calc(var(--base-spacing)*2);
-  --space-lg: calc(var(--base-spacing)*3);
-  --space-xl: calc(var(--base-spacing)*4);
-  --space-xxl: calc(var(--base-spacing)*5);
+  --space-md: calc(var(--base-spacing) * 2);
+  --space-lg: calc(var(--base-spacing) * 3);
+  --space-xl: calc(var(--base-spacing) * 4);
+  --space-xxl: calc(var(--base-spacing) * 5);
 }

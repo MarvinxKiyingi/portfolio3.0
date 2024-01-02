@@ -1,18 +1,42 @@
 @import './../../styles/scss/_mixins/breakpoints';
 
 .wrapper {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-end;
-    gap: var(--space-xs);
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: var(--space-xs);
 
-    a:hover {
-        cursor: pointer;
+  a {
+    position: relative;
+    padding: 0.2rem 0rem;
+
+    &:after {
+      position: absolute;
+      opacity: 0;
+      width: 0%;
+      height: 2px;
+      content: '';
+      opacity: 0.3;
+      background: var(--text-color-primary);
+      transition: all 0.3s;
     }
 
-    @include breakpoint(md) {
-        flex-direction: row;
-        align-items: center;
-        gap: calc(var(--base-spacing)*7)
+    &:after {
+      right: 0px;
+      bottom: 0px;
     }
+    &:hover:after {
+      width: 100%;
+    }
+    &:active:after {
+      opacity: 1;
+      color: var(--text-color-secondary);
+    }
+  }
+
+  @include breakpoint(md) {
+    flex-direction: row;
+    align-items: center;
+    gap: calc(var(--base-spacing) * 7);
+  }
 }

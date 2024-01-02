@@ -1,0 +1,209 @@
+@import './../../../styles/scss/_mixins/breakpoints';
+
+.wrapper {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+  padding-bottom: calc(var(--base-spacing) * 6);
+
+  @include breakpoint(lg) {
+    grid-row-gap: calc(var(--base-spacing) * 6);
+    grid-template-columns: repeat(12, 1fr);
+  }
+}
+
+.heading {
+  grid-column: 1/-1;
+  font-size: 24px;
+  font-weight: 500;
+  text-transform: uppercase;
+  color: var(--text-color-primary);
+
+  @include breakpoint(lg) {
+    grid-column: 1/4;
+    grid-row: 1/2;
+  }
+}
+
+.container {
+  grid-column: 1/-1;
+  position: relative;
+  opacity: var(--opacity);
+  aspect-ratio: 4/5;
+  padding: var(--base-spacing);
+
+  @include breakpoint(lg) {
+    aspect-ratio: unset;
+    padding: unset;
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    grid-template-rows: repeat(8, 1fr);
+    gap: 20px;
+  }
+
+  img {
+    aspect-ratio: 4/5;
+    object-fit: cover;
+    border-radius: 10px;
+    opacity: var(--opacity);
+
+    @include breakpoint(lg) {
+      aspect-ratio: unset;
+      grid-column: 7/-1;
+      grid-row: 1/7;
+    }
+  }
+
+  .projectButton {
+    display: flex;
+    gap: var(--base-spacing);
+    position: absolute;
+    top: var(--space-md);
+    right: var(--space-md);
+    backdrop-filter: blur(4px);
+    width: fit-content;
+    padding: 8px 14px;
+
+    @include breakpoint(lg) {
+      display: none;
+    }
+  }
+
+  .detailsWrapper {
+    display: none;
+    height: -webkit-fill-available;
+    flex-direction: column;
+    position: relative;
+    background-color: var(--bg-color);
+    padding: var(--base-spacing);
+    border-radius: 10px;
+    gap: var(--space-md);
+
+    @include breakpoint(lg) {
+      display: grid;
+      padding: unset;
+      grid-column: 1/4;
+      grid-row: 2/-2;
+      background-color: unset;
+    }
+
+    .details {
+      display: flex;
+      flex-direction: column;
+      padding: 12px;
+      gap: var(--space-md);
+
+      @include breakpoint(lg) {
+        padding: unset;
+        gap: var(--space-xl);
+      }
+
+      .description {
+        font-size: 20px;
+        color: var(--main-grey);
+      }
+
+      .tagsWrapper {
+        display: flex;
+        flex-direction: column;
+
+        .tagsTitle {
+          font-weight: 500;
+        }
+
+        .tags {
+          display: flex;
+          flex-wrap: wrap;
+          gap: 4px;
+          color: var(--main-grey-light);
+
+          .tag {
+            @include breakpoint(lg) {
+              font-size: 14px;
+            }
+          }
+
+          ::after {
+            content: ',';
+          }
+
+          :last-of-type::after {
+            content: unset;
+          }
+        }
+      }
+
+      .LinksWrapper {
+        display: flex;
+        flex-direction: column;
+        gap: var(--space-md);
+
+        @include breakpoint(lg) {
+          height: 100%;
+          justify-content: end;
+        }
+
+        .LinkWrapper {
+          display: flex;
+          align-items: center;
+          gap: var(--base-spacing);
+
+          .Link {
+            font-size: 18px;
+            font-style: normal;
+            font-weight: 500;
+            line-height: 121.5%;
+            letter-spacing: -0.54px;
+            text-decoration-line: underline;
+          }
+        }
+      }
+    }
+
+    .detailsButton {
+      position: static;
+      align-self: flex-end;
+      background-color: var(--main-black);
+      color: var(--main-white);
+
+      @include breakpoint(lg) {
+        display: none;
+      }
+
+      svg {
+        color: var(--main-white);
+
+        path {
+          stroke: var(--main-white);
+        }
+      }
+
+      @media (prefers-color-scheme: dark) {
+        background-color: var(--main-white);
+        color: var(--main-black);
+
+        svg {
+          color: var(--main-black);
+
+          path {
+            stroke: var(--main-black);
+          }
+        }
+      }
+    }
+  }
+}
+
+.isMobile {
+  @include breakpoint(lg) {
+    display: none;
+  }
+}
+.isDesktop {
+  display: none;
+
+  @include breakpoint(lg) {
+    display: grid;
+    position: relative !important;
+  }
+}

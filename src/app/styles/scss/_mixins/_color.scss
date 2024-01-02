@@ -3,22 +3,43 @@
   --main-black: rgba(24, 23, 23, 1);
   --main-white: rgba(255, 255, 255, 1);
   --main-grey: rgba(96, 96, 96, 1);
+  --main-grey-light: rgb(134, 134, 139);
   --main-blue: rgba(0, 36, 156, 1);
 
-  --text-color: var(--main-black);
-  --bg-color: #F3F3F3;
-  --component-bg-color: rgba(96, 96, 96, 0.50);
+  --text-color-primary: var(--main-black);
+  --text-color-secondary: var(--main-white);
+  --page-bg-color: #f3f3f3;
+  --bg-color: var(--main-white);
+  --component-bg-color: rgba(96, 96, 96, 0.5);
+
+  --opacity: 1;
+
+  // component specific
+  // Button
+  --button-default-bg-color: var(--main-white);
+  --button-outlinedWithTint-bg-color: rgba(255, 255, 255, 0.5);
+  --button-outlinedWithTint-border-color: rgba(96, 96, 96, 0.5);
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
     // Colors
-    --main-grey: #86868B;
+    --main-grey: var(--main-grey-light);
 
-    --text-color: #e3f5fc;
+    --text-color-primary: var(--main-white);
+    --text-color-secondary: var(--main-black);
+
+    --page-bg-color: var(--main-black);
     --bg-color: var(--main-black);
-    --component-bg-color: rgba(255, 255, 255, 0.50);
-    ;
+
+    --component-bg-color: rgba(255, 255, 255, 0.5);
+
+    --opacity: 0.9;
+
+    // component specific
+    // Button
+    --button-default-bg-color: var(--main-black);
+    --button-outlinedWithTint-bg-color: rgba(96, 96, 96, 0.5);
   }
 }
 

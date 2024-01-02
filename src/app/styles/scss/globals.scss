@@ -2,6 +2,7 @@
 @import '_mixins/typography';
 @import '_mixins/color';
 @import '_mixins/spacing';
+@import 'src/app/components/LogoMarquee/LogoMarquee.module.scss';
 
 :root {
   // Max-width
@@ -9,6 +10,12 @@
 
   // Navbar
   --navBar-height: 90.72px;
+
+  // Navbar
+  --border-radius: 50px;
+
+  // Marquee
+  --marqueeGap: 4rem;
 }
 
 * {
@@ -21,11 +28,13 @@ html,
 body {
   max-width: 100vw;
   overflow-x: hidden;
+  display: grid;
+  scroll-behavior: smooth;
 }
 
 html {
-  background-color: var(--bg-color);
-  color: var(--text-color);
+  background-color: var(--page-bg-color);
+  color: var(--text-color-primary);
   font-size: var(--base-font-size);
 }
 
@@ -36,10 +45,16 @@ body {
 }
 
 svg {
-  color: var(--text-color);
+  color: var(--text-color-primary);
 
   path {
-    fill: var(--text-color)
+    fill: var(--text-color-primary);
+  }
+}
+
+.strokeColor {
+  path {
+    stroke: var(--text-color-primary);
   }
 }
 
@@ -48,15 +63,15 @@ a {
   text-decoration: none;
 }
 
-//temporary styles 
-p{
+.view {
+  display: flex !important;
+}
+
+//temporary styles
+p {
   font-size: 14px;
 
   @include breakpoint(md-mini) {
     font-size: 18px;
-}
-
-@include breakpoint(lg) {
-    font-size: 22px;
-}
+  }
 }

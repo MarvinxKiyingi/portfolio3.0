@@ -1,0 +1,34 @@
+.marqueeWrapper {
+  grid-column: 1/-1;
+  gap: var(--marqueeGap);
+
+  .marqueeContentWrapper {
+    display: flex;
+    gap: var(--marqueeGap);
+  }
+
+  .logoImage {
+    position: relative !important;
+    height: auto !important;
+  }
+}
+.pathFillOverride {
+  fill: var(--text-color-secondary);
+}
+.pathFillNone {
+  fill: none;
+}
+
+.rfm-marquee {
+}
+.rfm-initial-child-container {
+}
+
+.rfm-overlay::before,
+.rfm-overlay::after {
+  background: linear-gradient(
+    to right,
+    var(--page-bg-color),
+    transparent
+  ) !important;
+}
