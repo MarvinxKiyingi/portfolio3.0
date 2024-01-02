@@ -6,7 +6,7 @@ import { usePathname } from 'next/navigation';
 
 const NavPill = () => {
   const pathname = usePathname();
-  const navigateTo = pathname === '/' ? '#Work' : '/';
+  const navigateTo = pathname === '/' ? '/#Work' : '/';
   const navItems = [{ to: navigateTo, text: 'Work' }];
 
   return (
