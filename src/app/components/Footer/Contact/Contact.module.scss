@@ -20,6 +20,9 @@
 
   .email {
     text-decoration: underline;
+    word-wrap: break-word;
+    overflow: hidden;
+
     @include breakpoint(md) {
       grid-column: -6/-2;
       text-align: end;
