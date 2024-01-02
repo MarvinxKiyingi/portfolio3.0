@@ -9,18 +9,16 @@ import Hestra from './Logos/Hestra';
 import Lexington from './Logos/Lexington';
 import Mayadelorez from './Logos/MayaDelorez';
 import Aco from './Logos/Aco';
-import Attendo from './Logos/Attendo';
 
 const LogoMarquee = async () => {
   return (
     <div className={projectStyles.wrapper}>
-      <h2 className={projectStyles.heading}>Worked on brands</h2>
+      {/* <h2 className={projectStyles.heading}>Worked on brands</h2> */}
       <Marquee
         className={styles.marqueeWrapper}
         autoFill
         gradient
-        gradientColor='#f3f3f3'
-        gradientWidth={133}
+        gradientWidth={'10%'}
       >
         <div className={styles.marqueeContentWrapper}>
           <Grandpa />
@@ -29,7 +27,6 @@ const LogoMarquee = async () => {
           <Hestra />
           <Aco />
           <Lexington />
-          <Attendo />
           <Mayadelorez />
           <Grandpa />
           <Fjallraven />
@@ -37,7 +34,6 @@ const LogoMarquee = async () => {
           <Hestra />
           <Aco />
           <Lexington />
-          <Attendo />
           <Mayadelorez />
         </div>
       </Marquee>

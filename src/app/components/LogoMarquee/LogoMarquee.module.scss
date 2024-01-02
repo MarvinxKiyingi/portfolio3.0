@@ -12,16 +12,13 @@
     height: auto !important;
   }
 }
+
 .pathFillOverride {
   fill: var(--text-color-secondary);
 }
+
 .pathFillNone {
   fill: none;
-}
-
-.rfm-marquee {
-}
-.rfm-initial-child-container {
 }
 
 .rfm-overlay::before,
