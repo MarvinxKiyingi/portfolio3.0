@@ -3,7 +3,6 @@ import styles from './page.module.scss';
 import NavBar from './components/NavBar/NavBar';
 import { client } from './utils/sanity/client';
 import { PortableText } from '@portabletext/react';
-import NavPill from './components/NavPill/NavPill';
 import Work from './components/Projects/Projects';
 import LogoMarquee from './components/LogoMarquee/LogoMarquee';
 
@@ -57,7 +56,6 @@ export default async function Home() {
         <LogoMarquee />
         <Work />
       </div>
-      <NavPill />
     </main>
   );
 }
