@@ -1,0 +1,14 @@
+@import './../../styles/scss/_mixins/breakpoints';
+
+.wrapper {
+  display: grid;
+  border-top: 1.5px solid var(--text-color-primary);
+
+  @include breakpoint(md) {
+    grid-template-columns: repeat(12, 1fr);
+    row-gap: calc(var(--base-spacing) * 10);
+  }
+
+  .experienceContent {
+  }
+}

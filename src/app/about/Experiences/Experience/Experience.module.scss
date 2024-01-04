@@ -1,0 +1,62 @@
+@import './../../../styles/scss/_mixins/breakpoints';
+
+.wrapper {
+  display: grid;
+  padding: var(--space-md);
+  gap: 8px;
+  border-bottom: 1.5px solid var(--text-color-primary);
+  width: 100%;
+  grid-template-columns: repeat(2, 1fr);
+
+  &:hover {
+    cursor: pointer;
+  }
+
+  &:hover,
+  &:focus {
+    background-color: var(--text-color-primary);
+    color: var(--text-color-secondary);
+
+    .duration {
+      > :first-of-type {
+        &::after {
+          background-color: var(--text-color-secondary);
+        }
+      }
+    }
+  }
+
+  @include breakpoint(md) {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .role {
+    text-align: end;
+  }
+
+  .duration {
+    display: flex;
+    gap: 6px;
+    grid-column: 1/-1;
+    color: var(--main-grey);
+
+    > :first-of-type {
+      display: flex;
+      gap: 6px;
+      align-items: center;
+
+      &::after {
+        content: '';
+        display: flex;
+        width: 4px;
+        height: 4px;
+        background-color: var(--text-color-primary);
+      }
+
+      &::after:hover,
+      &:focus {
+        background-color: var(--text-color-Secondary);
+      }
+    }
+  }
+}
