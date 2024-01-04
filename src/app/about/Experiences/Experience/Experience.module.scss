@@ -32,6 +32,10 @@
 
   .role {
     text-align: end;
+
+    @include breakpoint(md) {
+      text-align: start;
+    }
   }
 
   .duration {
@@ -39,6 +43,11 @@
     gap: 6px;
     grid-column: 1/-1;
     color: var(--main-grey);
+
+    @include breakpoint(md) {
+      grid-column: unset;
+      justify-content: end;
+    }
 
     > :first-of-type {
       display: flex;
