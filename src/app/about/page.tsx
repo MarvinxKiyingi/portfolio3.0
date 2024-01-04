@@ -1,7 +1,7 @@
 import React from 'react';
 import NavBar from '../components/NavBar/NavBar';
 import styles from './about.module.scss';
-import Knowledge from './Knowledge/Knowledge';
+import Knowledge from './Knowledge';
 
 const About = () => {
   return (
