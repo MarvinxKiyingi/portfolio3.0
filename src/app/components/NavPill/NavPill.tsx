@@ -7,7 +7,10 @@ import { usePathname } from 'next/navigation';
 const NavPill = () => {
   const pathname = usePathname();
   const navigateTo = pathname === '/' ? '/#Work' : '/';
-  const navItems = [{ to: navigateTo, text: 'Work' }];
+  const navItems = [
+    { to: navigateTo, text: 'Work' },
+    { to: '/about', text: 'About' },
+  ];
 
   return (
     <div className={styles.wrapper}>
