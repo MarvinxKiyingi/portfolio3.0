@@ -12,10 +12,6 @@
     border-bottom: unset;
   }
 
-  &:hover {
-    cursor: pointer;
-  }
-
   &:hover,
   &:focus {
     background-color: var(--text-color-primary);
