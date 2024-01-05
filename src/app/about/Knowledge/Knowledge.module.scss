@@ -31,6 +31,16 @@
     .description {
       grid-column: 3/-1;
       color: var(--main-grey);
+      display: flex;
+      gap: 4px;
+      flex-wrap: wrap;
+
+      > ::after {
+        content: ',';
+      }
+      > :last-of-type::after {
+        content: '';
+      }
 
       @include breakpoint(md) {
         grid-column: 4/7;
