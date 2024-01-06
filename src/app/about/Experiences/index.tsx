@@ -1,42 +1,7 @@
 import React from 'react';
 import styles from './Experiences.module.scss';
-import Image from 'next/image';
-import Experience from './Experience';
 import { client } from '@/app/utils/sanity/client';
-
-export type IListOfExperience = {
-  companyName: string;
-  _type: string;
-  from: string;
-  _id: string;
-  to: string;
-  _updatedAt: string;
-  image?: IImage;
-  _createdAt: string;
-  role: string;
-  _rev: string;
-};
-
-type IImage = {
-  _type: string;
-  asset: IAsset;
-};
-
-type IAsset = {
-  _ref: string;
-  _type: string;
-};
-
-type IBlockList = {
-  listOfExperiences: IListOfExperience[];
-  _type: string;
-  _key: string;
-  title: string;
-};
-
-type IExperienceGallery = {
-  blockList: IBlockList;
-};
+import ExperiencesView from './ExperiencesView';
 
 const Experiences = async () => {
   const tagsArrayWTitle = await client.fetch<IExperienceGallery>(
@@ -47,14 +12,7 @@ const Experiences = async () => {
 
   return (
     <div className={styles.wrapper}>
-      <Image className={styles.image} src='' alt='hello' fill />
-      <div className={styles.experienceContent}>
-        {listOfExperiences.map((experience) => (
-          <>
-            <Experience key={experience._id} experience={experience} />
-          </>
-        ))}
-      </div>
+      <ExperiencesView listOfExperiences={listOfExperiences} />
     </div>
   );
 };

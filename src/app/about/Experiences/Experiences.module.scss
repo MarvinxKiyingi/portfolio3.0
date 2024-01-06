@@ -8,23 +8,23 @@
     grid-template-columns: repeat(12, 1fr);
     gap: var(--space-lg);
   }
+}
 
-  .image {
-    display: none;
+.image {
+  display: none;
 
-    @include breakpoint(md) {
-      display: grid;
-      position: relative !important;
-      width: 100%;
-      height: auto !important;
-      grid-column: 1/4;
-      aspect-ratio: 1/1;
-      object-fit: cover;
-      border-radius: 10px;
-      margin: var(--space-lg) 0px;
-    }
+  @include breakpoint(md) {
+    display: grid;
+    width: 100%;
+    height: auto;
+    grid-column: 1/4;
+    aspect-ratio: 1/1;
+    object-fit: cover;
+    border-radius: 10px;
+    margin: var(--space-lg) 0px;
   }
-  .experienceContent {
-    grid-column: 4/-1;
-  }
+}
+
+.experienceContent {
+  grid-column: 4/-1;
 }
