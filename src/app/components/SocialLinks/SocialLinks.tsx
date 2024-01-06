@@ -2,17 +2,7 @@ import React from 'react';
 import styles from './SocialLinks.module.scss';
 import Link from 'next/link';
 import { client } from '@/app/utils/sanity/client';
-
-type INavItem = {
-  name: string;
-  _key: string;
-  _type: string;
-  linkUrl?: string;
-};
-
-type ISocialLinks = {
-  navItems: INavItem[];
-};
+import { INavItem, ISocialLinks } from '.';
 
 const SocialLinks = async () => {
   const navBar = await client.fetch<ISocialLinks[]>(`*[name == "NavbarMenu"]`);

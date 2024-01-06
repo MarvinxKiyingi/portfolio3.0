@@ -5,16 +5,6 @@ import classNames from 'classnames';
 import Cross from '../Icons/Cross';
 import Minus from '../Icons/Minus';
 
-type IButton = {
-  to?: string | undefined;
-  as?: 'link' | 'button';
-  text: string;
-  variant?: 'default' | 'outlinedWithTint';
-  className?: string;
-  onClick?: () => void;
-  icon?: 'cross' | 'minus';
-};
-
 const Button = ({
   variant = 'default',
   onClick,

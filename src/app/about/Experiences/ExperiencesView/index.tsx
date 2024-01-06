@@ -6,10 +6,6 @@ import { urlForImage } from '@/app/utils/sanity/imgBuilder';
 import Experience from '../Experience';
 import { getImageDimensions } from '@sanity/asset-utils';
 
-type IExperiencesViewProps = {
-  listOfExperiences: IListOfExperience[];
-};
-
 const ExperiencesView = ({ listOfExperiences }: IExperiencesViewProps) => {
   const [activeIndx, setActiveIndx] = useState(0);
 

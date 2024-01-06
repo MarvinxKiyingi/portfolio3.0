@@ -31,3 +31,7 @@ type IBlockList = {
 type IExperienceGallery = {
   blockList: IBlockList;
 };
+
+type IExperiencesViewProps = {
+  listOfExperiences: IListOfExperience[];
+};

@@ -5,37 +5,7 @@ import { client } from './utils/sanity/client';
 import { PortableText } from '@portabletext/react';
 import Work from './components/Projects/Projects';
 import LogoMarquee from './components/LogoMarquee/LogoMarquee';
-
-type BlockList = {
-  richTextEditor: RichTextEditor[];
-  _type: string;
-  _key: string;
-};
-
-type RichTextEditor = {
-  style: string;
-  _key: string;
-  markDefs: any[];
-  children: Child[];
-  _type: string;
-};
-
-type Child = {
-  _type: string;
-  marks: any[];
-  text: string;
-  _key: string;
-};
-
-type IHome = {
-  _updatedAt: string;
-  _createdAt: string;
-  blockList: BlockList[];
-  _rev: string;
-  _type: string;
-  name: string;
-  _id: string;
-};
+import { IHome } from './home';
 
 export default async function Home() {
   const home = await client.fetch<IHome[]>(`*[name == "Home"]`);

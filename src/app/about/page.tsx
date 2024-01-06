@@ -4,16 +4,7 @@ import styles from './about.module.scss';
 import Knowledge from './Knowledge';
 import Experiences from './Experiences';
 import { client } from '../utils/sanity/client';
-
-type IParagraph = {
-  blockList: BlockList;
-};
-
-type BlockList = {
-  _type: string;
-  _key: string;
-  paragraph: string;
-};
+import { IParagraph } from './About';
 
 const About = async () => {
   const about = await client.fetch<IParagraph>(
@@ -21,6 +12,7 @@ const About = async () => {
   );
   const { paragraph } = about.blockList;
 
+  console.log('hello:', about.blockList);
   return (
     <div className={styles.wrapper}>
       <NavBar />

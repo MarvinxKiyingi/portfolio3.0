@@ -1,11 +1,6 @@
 import React from 'react';
 import styles from './Experience.module.scss';
 
-type IExperienceProps = {
-  experience: IListOfExperience;
-  onMouseEnter: React.MouseEventHandler<HTMLDivElement> | undefined;
-};
-
 const Experience = ({ experience, onMouseEnter }: IExperienceProps) => {
   const { companyName, role, from, to } = experience;
 
