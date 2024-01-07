@@ -6,4 +6,5 @@ type IButton = {
   className?: string;
   onClick?: () => void;
   icon?: 'cross' | 'minus';
+  style?: object;
 };
