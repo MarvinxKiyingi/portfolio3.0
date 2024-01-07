@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import { DM_Sans, Inter } from 'next/font/google';
 import './styles/scss/globals.scss';
 import Footer from './components/Footer/Footer';
+import NavPill from './components/NavPill/NavPill';
 
 const dmSans = DM_Sans({ subsets: ['latin'], variable: '--font-dn-sans' });
 const inter = Inter({ subsets: ['latin'], variable: '--font-inter' });
@@ -22,6 +23,7 @@ export default function RootLayout({
       <body>
         {children}
         <Footer />
+        <NavPill />
       </body>
     </html>
   );

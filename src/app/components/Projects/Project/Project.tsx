@@ -1,18 +1,13 @@
 'use client';
 import React from 'react';
 import styles from './Project.module.scss';
-import { IProject } from '../Projects';
+import { IProjectProps } from '.';
 import Image from 'next/image';
 import { urlForImage } from '@/app/utils/sanity/imgBuilder';
 import Button from '../../Button/Button';
 import Link from 'next/link';
 import OpenPage from '../../Icons/OpenPage';
 import Github from '../../Icons/Github';
-
-type IProjectProps = {
-  project: IProject;
-  indx: number;
-};
 
 const Project = ({ project, indx }: IProjectProps) => {
   const { name, mobileImage, mobileImageAlt, desktopImage, desktopImageAlt } =
