@@ -5,16 +5,6 @@ import classNames from 'classnames';
 import Cross from '../Icons/Cross';
 import Minus from '../Icons/Minus';
 
-type IButton = {
-  to?: string | undefined;
-  as?: 'link' | 'button';
-  text: string;
-  variant?: 'default' | 'outlinedWithTint';
-  className?: string;
-  onClick?: () => void;
-  icon?: 'cross' | 'minus';
-};
-
 const Button = ({
   variant = 'default',
   onClick,
@@ -23,6 +13,7 @@ const Button = ({
   text,
   className,
   icon,
+  style,
 }: IButton) => {
   const buttonClassName = classNames(styles.default, className, {
     [styles.outlinedWithTint]: variant === 'outlinedWithTint',
@@ -44,14 +35,19 @@ const Button = ({
   switch (as) {
     case 'link':
       return (
-        <Link href={to || ''} className={buttonClassName}>
+        <Link
+          onClick={onClick}
+          href={to || ''}
+          className={buttonClassName}
+          style={style}
+        >
           {text}
           {icon && renderIcon()}
         </Link>
       );
     case 'button':
       return (
-        <button onClick={onClick} className={buttonClassName}>
+        <button onClick={onClick} className={buttonClassName} style={style}>
           {text}
           {icon && renderIcon()}
         </button>

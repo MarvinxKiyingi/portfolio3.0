@@ -1,0 +1,30 @@
+@import './../../styles/scss/_mixins/breakpoints';
+
+.wrapper {
+  display: grid;
+  border-top: 1.5px solid var(--text-color-primary);
+
+  @include breakpoint(md) {
+    grid-template-columns: repeat(12, 1fr);
+    gap: var(--space-lg);
+  }
+}
+
+.image {
+  display: none;
+
+  @include breakpoint(md) {
+    display: grid;
+    width: 100%;
+    height: auto;
+    grid-column: 1/4;
+    aspect-ratio: 1/1;
+    object-fit: cover;
+    border-radius: 10px;
+    margin: var(--space-lg) 0px;
+  }
+}
+
+.experienceContent {
+  grid-column: 4/-1;
+}
