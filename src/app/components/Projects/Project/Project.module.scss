@@ -63,6 +63,7 @@
     backdrop-filter: blur(4px);
     width: fit-content;
     padding: 8px 14px;
+    color: var(--text-color-primary);
 
     @include breakpoint(lg) {
       display: none;
