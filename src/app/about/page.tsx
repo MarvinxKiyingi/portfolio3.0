@@ -12,13 +12,12 @@ const About = async () => {
   );
   const { paragraph } = about.blockList;
 
-  console.log('hello:', about.blockList);
   return (
     <div className={styles.wrapper}>
       <NavBar />
 
       <div className={styles.content}>
-        <h1 className={`${styles.heading}`}>{paragraph}</h1>
+        <h1 className={`heading-h2 ${styles.heading}`}>{paragraph}</h1>
         <Knowledge />
         <Experiences />
       </div>
