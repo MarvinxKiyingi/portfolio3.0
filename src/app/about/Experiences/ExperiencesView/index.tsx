@@ -22,7 +22,7 @@ const ExperiencesView = ({ listOfExperiences }: IExperiencesViewProps) => {
       <Image
         className={styles.image}
         src={imgUrl}
-        alt='hello'
+        alt='company-logo'
         height={imgDimensions.width}
         width={imgDimensions.height}
       />
