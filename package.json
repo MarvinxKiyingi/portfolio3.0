@@ -1,6 +1,6 @@
 {
-  "name": "portfolio3.0",
-  "version": "0.1.0",
+  "name": "portfolio3.2",
+  "version": "3.2",
   "private": true,
   "scripts": {
     "dev": "next dev",

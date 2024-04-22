@@ -1,16 +1,17 @@
 import type { Metadata } from 'next';
-import { DM_Sans, Inter } from 'next/font/google';
+import { Syne, Plus_Jakarta_Sans } from 'next/font/google';
 import './styles/scss/globals.scss';
-import Footer from './components/Footer/Footer';
-import NavPill from './components/NavPill/NavPill';
 
-const dmSans = DM_Sans({ subsets: ['latin'], variable: '--font-dn-sans' });
-const inter = Inter({ subsets: ['latin'], variable: '--font-inter' });
+const syne = Syne({ subsets: ['latin'], variable: '--font-syne' });
+const plusJakartaSans = Plus_Jakarta_Sans({
+  subsets: ['latin'],
+  variable: '--font-plusJakartaSans',
+});
 
 export const metadata: Metadata = {
   title: 'Marvin Kiyingi',
   description:
-    'Front-end developer based in Stockholm, creating adaptive interfaces with sustainable code and user-centric design',
+    'I am a Stockholm-based tech enthusiast with a passion for development, design, and creating modern, functional websites. Open to opportunities outside my current city.',
 };
 
 export default function RootLayout({
@@ -19,12 +20,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang='en' className={`${dmSans.variable} ${inter.className}`}>
-      <body>
-        {children}
-        <Footer />
-        <NavPill />
-      </body>
+    <html lang='en' className={`${syne.variable} ${plusJakartaSans.className}`}>
+      <body>{children}</body>
     </html>
   );
 }
