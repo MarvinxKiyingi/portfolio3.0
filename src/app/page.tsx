@@ -24,6 +24,10 @@ export default async function Home() {
           <span className={styles.dot} />
           <SocialLinks />
         </div>
+
+        <p className={`${styles.descriptionWrapper} body-tiny`}>
+          <PortableText value={descriptionRichTextBlocks} />
+        </p>
       </div>
       <div className={styles.gridItem}></div>
     </main>
