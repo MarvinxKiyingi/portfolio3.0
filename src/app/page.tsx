@@ -15,10 +15,11 @@ export default async function Home() {
     <main className={styles.wrapper}>
       <div className={styles.gridItem}>
         <h1 className={styles.name}>
-          <Link href='/' className={styles.initialsWrapper}>
+          <Link href='/' className={`heading-h1 ${styles.initialsWrapper}`}>
             Marvin Kiyingi
           </Link>
         </h1>
+
         <div className={styles.contactWrapper}>
           <span className={styles.dot} />
           <SocialLinks />
