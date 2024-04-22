@@ -1,6 +1,7 @@
 :root {
   // Spacing
   --base-spacing: 8px;
+  --grid-gap-spacing: calc(var(--base-spacing) * 3 - 4px);
 
   /* spacing values */
   --space-xs: calc(var(--base-spacing) / 2);

@@ -1,1 +1,33 @@
 @import './styles/scss/_mixins/breakpoints';
+
+.wrapper {
+  display: grid;
+  height: 100%;
+  grid-template-rows: repeat(2, 1fr);
+  gap: var(--grid-gap-spacing);
+  padding: var(--grid-gap-spacing);
+}
+
+.gridItem {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(6, 1fr);
+  gap: var(--grid-gap-spacing);
+
+  @include breakpoint(md) {
+    grid-template-columns: repeat(12, 1fr);
+    grid-template-rows: repeat(12, 1fr);
+  }
+}
+
+.name {
+  display: flex;
+  flex-direction: column;
+  font-family: var(--font-syne);
+  grid-column: 2 span;
+  grid-row: 2 span;
+  font-size: var(--step-6);
+
+  @include breakpoint(md) {
+  }
+}

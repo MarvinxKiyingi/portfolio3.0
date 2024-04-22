@@ -6,9 +6,6 @@
 @import 'src/app/components/Projects/Project/Project.module.scss';
 
 :root {
-  // Max-width
-  --max-width: 1536px;
-
   // Navbar
   --navBar-height: 90.72px;
 
@@ -27,7 +24,7 @@
 
 html,
 body {
-  max-width: 100vw;
+  max-width: 100%;
   overflow-x: hidden;
   display: grid;
   scroll-behavior: smooth;
@@ -40,9 +37,7 @@ html {
 }
 
 body {
-  max-width: var(--max-width);
-  margin: 0 auto;
-  padding: 0 var(--space-lg);
+  width: 100%;
 }
 
 svg {

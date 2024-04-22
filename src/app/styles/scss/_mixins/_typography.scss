@@ -6,119 +6,78 @@
   --base-font-size: calc(var(--base-spacing) * 2);
 
   // Type scale
-  /* Step -2: 9.00px → 11.26px */
-  --step--2: clamp(0.5625rem, 0.531rem + 0.1799vw, 0.7038rem);
-
-  /* Step -1: 12.00px → 15.00px */
-  --step--1: clamp(0.75rem, 0.7082rem + 0.2389vw, 0.9375rem);
-
-  /* Step 0: 16.00px → 20.00px */
-  --step-0: clamp(1rem, 0.9443rem + 0.3185vw, 1.25rem);
-
-  /* Step 1: 21.33px → 26.66px */
-  --step-1: clamp(1.3331rem, 1.2589rem + 0.4244vw, 1.6663rem);
-
-  /* Step 2: 28.43px → 35.54px */
-  --step-2: clamp(1.7769rem, 1.6778rem + 0.5661vw, 2.2213rem);
-
-  /* Step 3: 37.90px → 47.37px */
-  --step-3: clamp(2.3688rem, 2.2368rem + 0.754vw, 2.9606rem);
-
-  /* Step 4: 50.52px → 63.15px */
-  --step-4: clamp(3.1575rem, 2.9815rem + 1.0056vw, 3.9469rem);
-
-  /* Step 5: 67.34px → 84.17px */
-  --step-5: clamp(4.2088rem, 3.9743rem + 1.34vw, 5.2606rem);
+  /* Step -2: 12px → 12px */
+  --step--2: clamp(0.75rem, 0.75rem + 0vi, 0.75rem);
+  /* Step -1: 14px → 14px */
+  --step--1: clamp(0.875rem, 0.875rem + 0vi, 0.875rem);
+  /* Step 0: 16px → 16px */
+  --step-0: clamp(1rem, 1rem + 0vi, 1rem);
+  /* Step 1: 20px → 20px */
+  --step-1: clamp(1.25rem, 1.25rem + 0vi, 1.25rem);
+  /* Step 2: 24px → 24px */
+  --step-2: clamp(1.5rem, 1.5rem + 0vi, 1.5rem);
+  /* Step 3: 28px → 28px */
+  --step-3: clamp(1.75rem, 1.75rem + 0vi, 1.75rem);
+  /* Step 4: 33.1776px → 33.1776px */
+  --step-4: clamp(2.0736rem, 2.0736rem + 0vi, 2.0736rem);
+  /* Step 5: 40px → 40px */
+  --step-5: clamp(2.5rem, 2.5rem + 0vi, 2.5rem);
+  /* Step 6: 48px →  48px*/
+  --step-6: clamp(3rem, 3rem + 0vi, 3rem);
 }
 
 .heading-h1 {
-  font-family: var(--font-dn-sans);
-  font-size: var(--step-5);
+  font-family: var(--font-syne);
+  font-size: var(--step-6);
   font-style: normal;
-  font-weight: 700;
-  letter-spacing: -2.693px;
+  font-weight: 600;
 }
 .heading-h2 {
-  font-family: var(--font-dn-sans);
-  font-size: var(--step-4);
+  font-family: var(--font-syne);
+  font-size: var(--step-5);
   font-style: normal;
-  font-weight: 700;
-  letter-spacing: -2.02px;
+  font-weight: 600;
 }
 .heading-h3 {
-  font-family: var(--font-dn-sans);
-  font-size: var(--step-3);
+  font-family: var(--font-syne);
+  font-size: var(--step-4);
   font-style: normal;
-  font-weight: 700;
-  letter-spacing: -1.516px;
+  font-weight: 600;
 }
 .heading-h4 {
-  font-family: var(--font-dn-sans);
-  font-size: var(--step-2);
+  font-family: var(--font-syne);
+  font-size: var(--step-3);
   font-style: normal;
-  font-weight: 700;
-  letter-spacing: -1.137px;
+  font-weight: 600;
 }
 .heading-h5 {
-  font-family: var(--font-dn-sans);
+  font-family: var(--font-syne);
   font-size: var(--step-2);
   font-style: normal;
-  font-weight: 700;
-  letter-spacing: -0.853px;
+  font-weight: 600;
 }
 .heading-h6 {
-  font-family: var(--font-dn-sans);
+  font-family: var(--font-syne);
   font-size: var(--step-1);
   font-style: normal;
-  font-weight: 700;
-  letter-spacing: -0.64px;
-}
-
-.sub-text {
-  font-family: var(--font-dn-sans);
-  font-size: var(--step-2);
-  font-style: normal;
-  font-weight: 500;
-  line-height: 134.1%; /* 38.125px */
-  letter-spacing: -0.853px;
-}
-
-.link {
-  font-size: var(--step-0);
-  font-style: normal;
-  font-weight: 500;
-  line-height: 124%; /* 19.84px */
-  text-decoration-line: underline;
-}
-
-.navigation {
-  font-family: var(--font-dn-sans);
-  font-size: var(--step-0);
-  font-style: normal;
-  font-weight: 500;
-  line-height: 125.596%; /* 26.79px */
-  letter-spacing: -0.64px;
-
-  @include breakpoint(md) {
-    font-size: var(--step-1);
-  }
+  font-weight: 600;
 }
 
 .body {
   font-size: var(--step-0);
   font-style: normal;
-  font-weight: 400;
-  line-height: 124%; /* 19.84px */
+  font-weight: 500;
+  line-height: 120%;
 }
 .body-small {
   font-size: var(--step--1);
   font-style: normal;
-  font-weight: 400;
-  line-height: var(--step-0); /* 133.333% */
+  font-weight: 500;
+  line-height: 120%;
 }
 .body-tiny {
   font-size: var(--step--2);
   font-style: normal;
-  font-weight: 400;
-  line-height: 113.5%; /* 10.215px */
+  font-weight: 500;
+  line-height: 120%;
 }
