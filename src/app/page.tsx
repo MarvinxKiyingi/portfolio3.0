@@ -4,6 +4,7 @@ import { client } from './utils/sanity/client';
 import { PortableText } from '@portabletext/react';
 import { IHome } from './home';
 import Link from 'next/link';
+import SocialLinks from './components/SocialLinks/SocialLinks';
 
 export default async function Home() {
   const home = await client.fetch<IHome[]>(`*[name == "Home"]`);
@@ -18,6 +19,10 @@ export default async function Home() {
             Marvin Kiyingi
           </Link>
         </h1>
+        <div className={styles.contactWrapper}>
+          <span className={styles.dot} />
+          <SocialLinks />
+        </div>
       </div>
       <div className={styles.gridItem}></div>
     </main>

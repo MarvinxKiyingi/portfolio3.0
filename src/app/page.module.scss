@@ -31,3 +31,28 @@
   @include breakpoint(md) {
   }
 }
+
+.contactWrapper {
+  display: flex;
+  flex-direction: column;
+  grid-column: 4 / -1;
+  grid-row: 3 span;
+  padding: 24px;
+  gap: 24px;
+
+  @include breakpoint(md) {
+    flex-direction: row;
+  }
+}
+
+.dot {
+  display: flex;
+  width: 14px;
+  height: 14px;
+  background: black;
+  border-radius: 50%;
+  align-self: end;
+
+  @include breakpoint(md) {
+  }
+}
