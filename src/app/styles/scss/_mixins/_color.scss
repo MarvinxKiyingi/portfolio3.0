@@ -24,12 +24,13 @@
 @media (prefers-color-scheme: dark) {
   :root {
     // Colors
+    --main-accent: #e43c13;
     --main-grey: var(--main-grey-light);
 
     --text-color-primary: var(--main-white);
     --text-color-secondary: var(--main-black);
 
-    --page-bg-color: var(--main-black);
+    --page-bg-color: rgba(42, 47, 38, 1);
     --bg-color: var(--main-black);
 
     --component-bg-color: rgba(255, 255, 255, 0.5);

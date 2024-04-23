@@ -13,7 +13,7 @@ export default async function Home() {
 
   return (
     <main className={styles.wrapper}>
-      <div className={styles.gridItem}>
+      <section className={styles.gridItem}>
         <h1 className={styles.name}>
           <Link href='/' className={`heading-h1 ${styles.initialsWrapper}`}>
             Marvin Kiyingi
@@ -25,11 +25,11 @@ export default async function Home() {
           <SocialLinks />
         </div>
 
-        <p className={`${styles.descriptionWrapper} body-tiny`}>
+        <div className={`${styles.descriptionWrapper} body-tiny`}>
           <PortableText value={descriptionRichTextBlocks} />
-        </p>
-      </div>
-      <div className={styles.gridItem}></div>
+        </div>
+      </section>
+      <section className={styles.gridItem}></section>
     </main>
   );
 }
