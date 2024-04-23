@@ -3,7 +3,7 @@
 .wrapper {
   display: grid;
   height: 100%;
-  grid-template-rows: repeat(2, 1fr);
+  grid-template-rows: 1fr;
   gap: var(--grid-gap-spacing);
   padding: var(--grid-gap-spacing);
 }
@@ -56,12 +56,36 @@
   @include breakpoint(md) {
   }
 }
+
 .descriptionWrapper {
   display: flex;
   grid-column: 2 / -1;
   grid-row: 2 span;
   align-items: end;
   color: var(--main-grey);
+
+  @include breakpoint(md) {
+  }
+}
+.workTitle {
+  display: flex;
+  grid-column: 1 / -1;
+  grid-row: 1 span;
+
+  @include breakpoint(md) {
+  }
+}
+.agencyWorkWrapper {
+  display: flex;
+  flex-direction: column;
+  grid-column: 2 / -1;
+  grid-row: 3 span;
+
+  ul {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+  }
 
   @include breakpoint(md) {
   }
