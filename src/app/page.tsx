@@ -21,8 +21,8 @@ export default async function Home() {
   return (
     <main className={styles.wrapper}>
       <section className={styles.gridItem}>
-        <h1 className={styles.name}>
-          <Link href='/' className={`heading-h1 ${styles.initialsWrapper}`}>
+        <h1 className={styles.nameWrapper}>
+          <Link href='/' className={`heading-h1 ${styles.name}`}>
             Marvin Kiyingi
           </Link>
         </h1>
