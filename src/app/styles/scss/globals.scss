@@ -41,17 +41,7 @@ body {
 }
 
 svg {
-  color: var(--text-color-primary);
-
-  path {
-    fill: var(--text-color-primary);
-  }
-}
-
-.strokeColor {
-  path {
-    stroke: var(--text-color-primary);
-  }
+  color: var(--main-grey-light);
 }
 
 a {

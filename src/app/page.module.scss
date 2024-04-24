@@ -51,7 +51,7 @@
   height: 14px;
   background: var(--text-color-primary);
   border-radius: 50%;
-  align-self: end;
+  align-self: flex-end;
 
   @include breakpoint(md) {
   }
@@ -61,7 +61,7 @@
   display: flex;
   grid-column: 2 / -1;
   grid-row: 2 span;
-  align-items: end;
+  align-items: flex-end;
   color: var(--main-grey);
 
   @include breakpoint(md) {
@@ -79,7 +79,7 @@
   display: flex;
   flex-direction: column;
   grid-column: 2 / -1;
-  grid-row: 3 span;
+  grid-row: 5 span;
 
   ul {
     display: flex;
