@@ -1,6 +1,6 @@
 import React from 'react';
 import styles from './OpenLink.module.scss';
-import OpenLinkIcon from '../Icons/ArrowDown';
+import OpenLinkIcon from '../Icons/OpenLinkIcon';
 
 const OpenLink = ({ href, companyName }: IListOfAgencyWork) => {
   return (

@@ -7,6 +7,7 @@ import Link from 'next/link';
 import SocialLinks from './components/SocialLinks/SocialLinks';
 import { IWork } from './components/Projects';
 import OpenLink from './components/OpenLink/OpenLink';
+import Projects from './components/Projects/Projects';
 
 export default async function Home() {
   const home = await client.fetch<IHome[]>(`*[name == "Home"]`);
@@ -52,6 +53,8 @@ export default async function Home() {
             <OpenLink key={work._id} {...work} />
           ))}
         </ul>
+
+        <Projects />
       </section>
     </main>
   );

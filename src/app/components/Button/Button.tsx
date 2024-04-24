@@ -2,8 +2,6 @@ import React from 'react';
 import styles from './Button.module.scss';
 import Link from 'next/link';
 import classNames from 'classnames';
-import Cross from '../Icons/Cross';
-import Minus from '../Icons/Minus';
 
 const Button = ({
   variant = 'default',
@@ -23,9 +21,9 @@ const Button = ({
   const renderIcon = () => {
     switch (icon) {
       case 'cross':
-        return <Cross />;
+        return <span>+</span>;
       case 'minus':
-        return <Minus />;
+        return <span>—</span>;
 
       default:
         return null; // If no matching icon is found, return null or another default behavior

@@ -80,6 +80,7 @@
   flex-direction: column;
   grid-column: 2 / -1;
   grid-row: 5 span;
+  padding-bottom: 28px;
 
   ul {
     display: flex;
@@ -88,5 +89,6 @@
   }
 
   @include breakpoint(md) {
+    padding-bottom: 0;
   }
 }
