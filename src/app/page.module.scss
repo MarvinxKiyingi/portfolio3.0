@@ -1,1 +1,94 @@
 @import './styles/scss/_mixins/breakpoints';
+
+.wrapper {
+  display: grid;
+  height: 100%;
+  grid-template-rows: 1fr;
+  gap: var(--grid-gap-spacing);
+  padding: var(--grid-gap-spacing);
+}
+
+.gridItem {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(6, 1fr);
+  gap: var(--grid-gap-spacing);
+
+  @include breakpoint(md) {
+    grid-template-columns: repeat(12, 1fr);
+    grid-template-rows: repeat(12, 1fr);
+  }
+}
+
+.name {
+  display: flex;
+  flex-direction: column;
+  font-family: var(--font-syne);
+  grid-column: 2 span;
+  grid-row: 2 span;
+  font-size: var(--step-6);
+
+  @include breakpoint(md) {
+  }
+}
+
+.contactWrapper {
+  display: flex;
+  flex-direction: column;
+  grid-column: 4 / -1;
+  grid-row: 3 span;
+  padding: 24px;
+  gap: 24px;
+
+  @include breakpoint(md) {
+    flex-direction: row;
+  }
+}
+
+.dot {
+  display: flex;
+  width: 14px;
+  height: 14px;
+  background: var(--text-color-primary);
+  border-radius: 50%;
+  align-self: flex-end;
+
+  @include breakpoint(md) {
+  }
+}
+
+.descriptionWrapper {
+  display: flex;
+  grid-column: 2 / -1;
+  grid-row: 2 span;
+  align-items: flex-end;
+  color: var(--main-grey);
+
+  @include breakpoint(md) {
+  }
+}
+.workTitle {
+  display: flex;
+  grid-column: 1 / -1;
+  grid-row: 1 span;
+
+  @include breakpoint(md) {
+  }
+}
+.agencyWorkWrapper {
+  display: flex;
+  flex-direction: column;
+  grid-column: 2 / -1;
+  grid-row: 5 span;
+  padding-bottom: 28px;
+
+  ul {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+  }
+
+  @include breakpoint(md) {
+    padding-bottom: 0;
+  }
+}

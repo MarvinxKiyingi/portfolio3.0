@@ -1,0 +1,27 @@
+@import './../../styles/scss/_mixins/breakpoints';
+
+.wrapper {
+  border-bottom: 1.5px solid var(--main-grey-light);
+  padding: 12.5px 0;
+  list-style: none;
+
+  &:last-of-type {
+    border-bottom: transparent;
+  }
+
+  li {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  @include breakpoint(md) {
+    grid-template-columns: repeat(12, 1fr);
+    gap: var(--space-lg);
+  }
+}
+.company {
+  color: var(--main-grey);
+
+  @include breakpoint(md) {
+  }
+}

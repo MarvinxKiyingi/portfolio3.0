@@ -7,9 +7,6 @@ import Link from 'next/link';
 const NavBar = async () => {
   return (
     <section className={styles.wrapper}>
-      <Link href='/' className={styles.initialsWrapper}>
-        <Initials />
-      </Link>
       <SocialLinks />
     </section>
   );
