@@ -11,18 +11,12 @@ import Projects from './components/Projects/Projects';
 
 export default async function Home() {
   const home = await client.fetch<IHome[]>(`*[name == "Home"]`);
-  const work = await client.fetch<IWork>(
-    `*[name == "Work"][0]{blockList[0]{listOfProjects[]->{...,tags[]->}}}`
-  );
   const agencyWork = await client.fetch<IAgencyWorkGallery>(
     `*[name == "AgencyWork"][0]{blockList[0]{listOfAgencyWork[]->{...,tags[]->}}}`
   );
   const { blockList } = home[0];
   const descriptionRichTextBlocks = blockList[0].richTextEditor;
-  const { listOfProjects } = work.blockList;
   const { listOfAgencyWork } = agencyWork.blockList;
-
-  console.log('listOfAgencyWork:', listOfAgencyWork);
 
   return (
     <main className={styles.wrapper}>
