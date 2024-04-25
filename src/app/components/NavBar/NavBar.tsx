@@ -1,6 +1,5 @@
 import React from 'react';
 import styles from './NavBar.module.scss';
-import Initials from '../Icons/Initials';
 import SocialLinks from '../SocialLinks/SocialLinks';
 import Link from 'next/link';
 
