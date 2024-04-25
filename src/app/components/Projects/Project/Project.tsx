@@ -6,7 +6,6 @@ import Image from 'next/image';
 import { urlForImage } from '@/app/utils/sanity/imgBuilder';
 import Button from '../../Button/Button';
 import Link from 'next/link';
-import OpenPage from '../../Icons/OpenPage';
 import Github from '../../Icons/Github';
 import { getImageDimensions } from '@sanity/asset-utils';
 import OpenLinkIcon from '../../Icons/OpenLinkIcon';
@@ -27,21 +26,6 @@ const Project = ({ project, indx }: IProjectProps) => {
         : 0,
       aspectRatio: mobileImage
         ? getImageDimensions(urlForImage(mobileImage).url()).aspectRatio
-        : 0,
-    },
-  };
-  const isDesktop = {
-    alt: `${desktopImageAlt}`,
-    img: {
-      url: desktopImage ? urlForImage(desktopImage).url() : '',
-      width: desktopImage
-        ? getImageDimensions(urlForImage(desktopImage).url()).width
-        : 0,
-      height: desktopImage
-        ? getImageDimensions(urlForImage(desktopImage).url()).height
-        : 0,
-      aspectRatio: desktopImage
-        ? getImageDimensions(urlForImage(desktopImage).url()).aspectRatio
         : 0,
     },
   };
@@ -116,14 +100,6 @@ const Project = ({ project, indx }: IProjectProps) => {
           </div>
         </div>
       </div>
-
-      <Image
-        className={styles.isDesktop}
-        alt={isDesktop.alt}
-        src={isDesktop.img.url}
-        width={isDesktop.img.width}
-        height={isDesktop.img.height}
-      />
     </div>
   );
 };

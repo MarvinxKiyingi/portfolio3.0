@@ -38,6 +38,6 @@
   @include breakpoint(sm) {
     flex-direction: row;
     align-items: center;
-    gap: calc(var(--base-spacing) * 7);
+    justify-content: flex-end;
   }
 }

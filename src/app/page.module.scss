@@ -6,6 +6,8 @@
   grid-template-rows: 1fr;
   gap: var(--grid-gap-spacing);
   padding: var(--grid-gap-spacing);
+  max-width: 2540px;
+  margin: 0 auto;
 }
 
 .gridItem {
@@ -18,9 +20,8 @@
     grid-template-columns: repeat(8, 1fr);
   }
 
-  @include breakpoint(md) {
+  @include breakpoint(lg) {
     grid-template-columns: repeat(12, 1fr);
-    grid-template-rows: repeat(12, 1fr);
   }
 }
 
@@ -35,9 +36,16 @@
   @include breakpoint(sm) {
     grid-column: 5 span;
   }
+  @include breakpoint(lg) {
+    grid-column: 9 span;
+    grid-row: 2 span;
+  }
 }
 .name {
-  font-size: clamp(3rem, 10vw, 8.625rem);
+  font-size: clamp(3rem, 16vw, 18.188rem);
+  @include breakpoint(lg) {
+    font-size: clamp(3rem, 10vw, 18.188rem);
+  }
 }
 
 .contactWrapper {
@@ -50,12 +58,11 @@
 
   @include breakpoint(sm) {
     grid-column: 3 span;
-    grid-row: unset;
     height: fit-content;
     flex-direction: row-reverse;
   }
-  @include breakpoint(md) {
-    flex-direction: row;
+  @include breakpoint(lg) {
+    grid-row: unset;
   }
 }
 
@@ -68,7 +75,7 @@
   align-self: flex-end;
   aspect-ratio: 1/1;
 
-  @include breakpoint(sm) {
+  @include breakpoint(lg) {
     align-self: center;
   }
 }
@@ -85,16 +92,22 @@
     grid-row: 5 / -1;
     align-items: flex-start;
   }
-  @include breakpoint(md) {
+  @include breakpoint(lg) {
+    grid-column: 3 span / -4;
+    grid-row: 4 / 2 span;
   }
 }
 .workTitle {
   display: flex;
   grid-column: 1 / -1;
   grid-row: 1 span;
+  font-family: var(--font-plusJakartaSans);
 
   @include breakpoint(sm) {
     grid-column: 4 span;
+  }
+  @include breakpoint(lg) {
+    font-size: clamp(1.25rem, 0.96vw, 1.75rem);
   }
 }
 .agencyWorkWrapper {
@@ -114,5 +127,8 @@
     padding-bottom: 0;
     grid-column: 6 / -1;
     grid-row: 6 span;
+  }
+  @include breakpoint(lg) {
+    grid-column: 3 span / -1;
   }
 }
