@@ -1,44 +1,11 @@
 @import './../../../styles/scss/_mixins/breakpoints';
 
-.wrapper {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 20px;
-  padding-bottom: calc(var(--base-spacing) * 6);
-
-  @include breakpoint(lg) {
-    grid-row-gap: calc(var(--base-spacing) * 6);
-    grid-template-columns: repeat(12, 1fr);
-  }
-}
-
-.heading {
-  grid-column: 1/-1;
-  font-weight: 500;
-  text-transform: uppercase;
-  color: var(--text-color-primary);
-
-  @include breakpoint(lg) {
-    grid-column: 1/4;
-    grid-row: 1/2;
-  }
-}
-
 .container {
   display: flex;
-  grid-column: 1/-1;
   position: relative;
   opacity: var(--opacity);
   aspect-ratio: 4/5;
-
-  @include breakpoint(lg) {
-    aspect-ratio: unset;
-    padding: unset;
-    display: grid;
-    grid-template-columns: repeat(12, 1fr);
-    grid-template-rows: repeat(8, 1fr);
-    gap: 20px;
-  }
+  flex: 1;
 
   img {
     width: 100%;
@@ -47,12 +14,6 @@
     object-fit: cover;
     border-radius: 10px;
     opacity: var(--opacity);
-
-    @include breakpoint(lg) {
-      aspect-ratio: unset;
-      grid-column: 7/-1;
-      grid-row: 1/7;
-    }
   }
 
   .projectButton {
@@ -65,10 +26,6 @@
     width: fit-content;
     padding: 8px 14px;
     color: var(--text-color-primary);
-
-    @include breakpoint(lg) {
-      display: none;
-    }
   }
 
   .detailsWrapper {
@@ -83,24 +40,11 @@
     left: 0;
     top: 0;
 
-    @include breakpoint(lg) {
-      display: grid;
-      padding: unset;
-      grid-column: 1/4;
-      grid-row: 2/-2;
-      background-color: unset;
-    }
-
     .details {
       display: flex;
       flex-direction: column;
       padding: 12px;
       gap: var(--space-md);
-
-      @include breakpoint(lg) {
-        padding: unset;
-        gap: var(--space-xl);
-      }
 
       .description {
         font-size: 20px;
@@ -122,9 +66,6 @@
           color: var(--main-grey-light);
 
           .tag {
-            @include breakpoint(lg) {
-              font-size: 14px;
-            }
           }
 
           ::after {
@@ -142,11 +83,6 @@
         flex-direction: column;
         gap: var(--space-md);
 
-        @include breakpoint(lg) {
-          height: 100%;
-          justify-content: end;
-        }
-
         .LinkWrapper {
           display: flex;
           align-items: center;
@@ -160,10 +96,6 @@
       align-self: flex-end;
       background-color: var(--main-black);
       color: var(--main-white);
-
-      @include breakpoint(lg) {
-        display: none;
-      }
 
       svg {
         color: var(--main-white);
@@ -197,14 +129,4 @@
 }
 
 .isMobile {
-  @include breakpoint(lg) {
-    display: none;
-  }
-}
-.isDesktop {
-  display: none;
-
-  @include breakpoint(lg) {
-    display: grid;
-  }
 }

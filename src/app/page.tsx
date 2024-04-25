@@ -1,31 +1,55 @@
 import './styles/scss/globals.scss';
 import styles from './page.module.scss';
-import NavBar from './components/NavBar/NavBar';
 import { client } from './utils/sanity/client';
 import { PortableText } from '@portabletext/react';
-import Work from './components/Projects/Projects';
-import LogoMarquee from './components/LogoMarquee/LogoMarquee';
 import { IHome } from './home';
+import Link from 'next/link';
+import SocialLinks from './components/SocialLinks/SocialLinks';
+import { IWork } from './components/Projects';
+import OpenLink from './components/OpenLink/OpenLink';
+import Projects from './components/Projects/Projects';
 
 export default async function Home() {
   const home = await client.fetch<IHome[]>(`*[name == "Home"]`);
+  const agencyWork = await client.fetch<IAgencyWorkGallery>(
+    `*[name == "AgencyWork"][0]{blockList[0]{listOfAgencyWork[]->{...,tags[]->}}}`
+  );
   const { blockList } = home[0];
   const descriptionRichTextBlocks = blockList[0].richTextEditor;
+  const { listOfAgencyWork } = agencyWork.blockList;
 
   return (
-    <main className={styles.main}>
-      <div className={styles.hero}>
-        <NavBar />
+    <main className={styles.wrapper}>
+      <section className={styles.gridItem}>
+        <h1 className={styles.nameWrapper}>
+          <Link href='/' className={`heading-h1 ${styles.name}`}>
+            Marvin Kiyingi
+          </Link>
+        </h1>
 
-        <section className={styles.textWrapper}>
+        <div className={styles.contactWrapper}>
+          <span className={styles.dot} />
+          <SocialLinks />
+        </div>
+
+        <div className={`${styles.descriptionWrapper} body-tiny`}>
           <PortableText value={descriptionRichTextBlocks} />
-        </section>
-      </div>
+        </div>
+      </section>
 
-      <div className={styles.workWrapper}>
-        <LogoMarquee />
-        <Work />
-      </div>
+      <section className={styles.gridItem}>
+        <h2 className={`heading-h6 ${styles.workTitle}`}>
+          Personal & Agency Contributions
+        </h2>
+
+        <ul className={`${styles.agencyWorkWrapper}`}>
+          {listOfAgencyWork?.map((work) => (
+            <OpenLink key={work._id} {...work} />
+          ))}
+        </ul>
+
+        <Projects />
+      </section>
     </main>
   );
 }

@@ -1,17 +1,18 @@
 @import './../../styles/scss/_mixins/breakpoints';
 
 .wrapper {
-  display: grid;
+  display: flex;
+  flex-direction: column;
   gap: var(--space-lg);
+  grid-column: 1 / -1;
+  grid-row: 1 span;
 
   @include breakpoint(md-mini) {
-    grid-template-columns: repeat(2, 1fr);
-    gap: calc(var(--base-spacing) * 6);
-  }
-  @include breakpoint(md) {
-    gap: calc(var(--base-spacing) * 6);
+    grid-column: 1 / span 4;
+    grid-row: 5 span;
   }
   @include breakpoint(lg) {
-    grid-template-columns: unset;
+    grid-column: 1 / span 8;
+    flex-direction: row;
   }
 }

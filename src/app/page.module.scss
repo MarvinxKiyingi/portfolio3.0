@@ -1,64 +1,134 @@
 @import './styles/scss/_mixins/breakpoints';
 
-.hero {
-  height: 100vh;
+.wrapper {
+  display: grid;
+  height: 100%;
+  grid-template-rows: 1fr;
+  gap: var(--grid-gap-spacing);
+  padding: var(--grid-gap-spacing);
+  max-width: 2540px;
+  margin: 0 auto;
+}
+
+.gridItem {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  grid-template-rows: repeat(8, 1fr);
-  gap: calc(var(--base-spacing) * 3);
+  grid-template-rows: repeat(6, 1fr);
+  gap: var(--grid-gap-spacing);
 
-  @include breakpoint(md) {
+  @include breakpoint(sm) {
+    grid-template-columns: repeat(8, 1fr);
+  }
+
+  @include breakpoint(lg) {
     grid-template-columns: repeat(12, 1fr);
-    grid-template-rows: repeat(12, 1fr);
   }
 }
 
-.textWrapper {
-  grid-column: 3/-1;
-  grid-row: 4/-2;
-  gap: calc(var(--base-spacing) * 3);
+.nameWrapper {
   display: flex;
+  flex-direction: column;
+  font-family: var(--font-syne);
+  grid-column: 2 span;
+  grid-row: 3 span;
+  font-size: var(--step-6);
+
+  @include breakpoint(sm) {
+    grid-column: 5 span;
+  }
+  @include breakpoint(lg) {
+    grid-column: 9 span;
+    grid-row: 2 span;
+  }
+}
+.name {
+  font-size: clamp(3rem, 16vw, 18.188rem);
+  @include breakpoint(lg) {
+    font-size: clamp(3rem, 10vw, 18.188rem);
+  }
+}
+
+.contactWrapper {
+  display: flex;
+  flex-direction: column;
+  grid-column: 1 span / -1;
+  grid-row: 3 span;
+  padding: 24px;
+  gap: 24px;
+
+  @include breakpoint(sm) {
+    grid-column: 3 span;
+    height: fit-content;
+    flex-direction: row-reverse;
+  }
+  @include breakpoint(lg) {
+    grid-row: unset;
+  }
+}
+
+.dot {
+  display: flex;
+  width: 14px;
+  height: 14px;
+  background: var(--text-color-primary);
+  border-radius: 50%;
+  align-self: flex-end;
+  aspect-ratio: 1/1;
+
+  @include breakpoint(lg) {
+    align-self: center;
+  }
+}
+
+.descriptionWrapper {
+  display: flex;
+  grid-column: 2 / -1;
+  grid-row: 2 span;
   align-items: flex-end;
-  text-align: justify;
   color: var(--main-grey);
 
-  @include breakpoint(xs) {
-    grid-column: 2/-1;
-    grid-row: 4/-3;
+  @include breakpoint(sm) {
+    grid-column: 3 / 3 span;
+    grid-row: 5 / -1;
+    align-items: flex-start;
   }
-
-  @include breakpoint(md) {
-    grid-column: 8/-1;
-    grid-row: 9/12;
-    text-align: start;
-  }
-}
-
-@keyframes jump {
-  0%,
-  20%,
-  50%,
-  80%,
-  100% {
-    transform: translateY(0);
-  }
-
-  40% {
-    transform: translateY(-20px);
-  }
-
-  60% {
-    transform: translateY(-10px);
+  @include breakpoint(lg) {
+    grid-column: 3 span / -4;
+    grid-row: 4 / 2 span;
   }
 }
+.workTitle {
+  display: flex;
+  grid-column: 1 / -1;
+  grid-row: 1 span;
+  font-family: var(--font-plusJakartaSans);
 
-.workWrapper {
-  display: grid;
-  gap: calc(var(--base-spacing) * 6);
-  margin-top: var(--space-md);
+  @include breakpoint(sm) {
+    grid-column: 4 span;
+  }
+  @include breakpoint(lg) {
+    font-size: clamp(1.25rem, 0.96vw, 1.75rem);
+  }
+}
+.agencyWorkWrapper {
+  display: flex;
+  flex-direction: column;
+  grid-column: 2 / -1;
+  grid-row: 5 span;
+  padding-bottom: 28px;
 
-  @include breakpoint(md) {
-    gap: calc(var(--base-spacing) * 12);
-    margin-top: calc(var(--base-spacing) * 8);
+  ul {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+  }
+
+  @include breakpoint(sm) {
+    padding-bottom: 0;
+    grid-column: 6 / -1;
+    grid-row: 6 span;
+  }
+  @include breakpoint(lg) {
+    grid-column: 3 span / -1;
   }
 }
