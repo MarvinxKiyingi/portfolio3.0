@@ -11,7 +11,7 @@ const SocialLinks = async () => {
   return (
     <div className={styles.wrapper}>
       {navItems.map(({ _key, linkUrl, name }: INavItem) => (
-        <Link key={_key} className='body-tiny' href={linkUrl || ''}>
+        <Link key={_key} className='body-tiny link' href={linkUrl || ''}>
           {name}
         </Link>
       ))}
