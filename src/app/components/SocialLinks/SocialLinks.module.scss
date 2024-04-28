@@ -7,10 +7,6 @@
   flex: 1;
   gap: var(--space-sm);
 
-  a {
-    padding: 0.2rem 0rem;
-  }
-
   @include breakpoint(sm) {
     flex-direction: row;
     justify-content: flex-end;

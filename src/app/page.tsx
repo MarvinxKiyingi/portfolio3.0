@@ -28,8 +28,10 @@ export default async function Home() {
         </h1>
 
         <div className={styles.contactWrapper}>
-          <span className={styles.dot} />
-          <SocialLinks />
+          <div className={styles.contactContainer}>
+            <span className={styles.dot} />
+            <SocialLinks />
+          </div>
         </div>
 
         <div className={`${styles.descriptionWrapper} body-tiny`}>
