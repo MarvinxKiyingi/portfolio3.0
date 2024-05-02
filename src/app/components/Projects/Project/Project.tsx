@@ -1,5 +1,5 @@
 'use client';
-import React from 'react';
+import React, { useState } from 'react';
 import styles from './Project.module.scss';
 import { IProjectProps } from '.';
 import Image from 'next/image';
@@ -11,8 +11,8 @@ import { getImageDimensions } from '@sanity/asset-utils';
 import OpenLinkIcon from '../../Icons/OpenLinkIcon';
 
 const Project = ({ project, indx }: IProjectProps) => {
-  const { name, mobileImage, mobileImageAlt, desktopImage, desktopImageAlt } =
-    project;
+  const { mobileImage, mobileImageAlt } = project;
+  const [viewDetails, setViewDetails] = useState(false);
 
   const isMobile = {
     alt: `${mobileImageAlt}`,
@@ -30,8 +30,8 @@ const Project = ({ project, indx }: IProjectProps) => {
     },
   };
 
-  function viewDetails() {
-    document.getElementById(`${project._id}`)?.classList.toggle('view');
+  function updateStyles() {
+    setViewDetails(!viewDetails);
   }
 
   return (
@@ -42,27 +42,27 @@ const Project = ({ project, indx }: IProjectProps) => {
         className={styles.isMobile}
         width={isMobile.img.width}
         height={isMobile.img.height}
+        priority
       />
 
       <Button
-        className={styles.projectButton}
-        onClick={() => viewDetails()}
+        className={`${
+          !viewDetails ? styles.projectButton : styles.detailsButton
+        }`}
+        id={`${project._id}-viewDetailsButton`}
+        onClick={() => updateStyles()}
         variant='outlinedWithTint'
-        text='Details'
+        text={`${viewDetails ? 'Close' : 'Details'}`}
         icon='cross'
+        isIconRotated={viewDetails}
+        iconStyles={{ transition: 'transform 0.3s ease' }}
         as='button'
       />
 
-      <div className={styles.detailsWrapper} id={`${project._id}`}>
-        <Button
-          className={`${styles.projectButton} ${styles.detailsButton}`}
-          onClick={() => viewDetails()}
-          variant='outlinedWithTint'
-          text='Close'
-          icon='minus'
-          as='button'
-        />
-
+      <div
+        className={`${!viewDetails ? styles.detailsWrapper : styles.view}`}
+        id={project._id}
+      >
         <div className={styles.details}>
           <p className={`body ${styles.description}`}>{project.description}</p>
 
