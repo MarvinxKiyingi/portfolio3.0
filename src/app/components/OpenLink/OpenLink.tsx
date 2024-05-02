@@ -4,7 +4,10 @@ import OpenLinkIcon from '../Icons/OpenLinkIcon';
 
 const OpenLink = ({ href, companyName }: IListOfAgencyWork) => {
   return (
-    <a className={`${styles.wrapper} body-tiny ${styles.company}`} href={href}>
+    <a
+      className={`link ${styles.wrapper} body-tiny ${styles.company} `}
+      href={href}
+    >
       <li>
         {companyName}
         <OpenLinkIcon />
