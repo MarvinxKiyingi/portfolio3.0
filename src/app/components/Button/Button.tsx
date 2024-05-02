@@ -2,6 +2,7 @@ import React from 'react';
 import styles from './Button.module.scss';
 import Link from 'next/link';
 import classNames from 'classnames';
+import Plus from '../Icons/Plus';
 
 const Button = ({
   variant = 'default',
@@ -10,8 +11,11 @@ const Button = ({
   as = 'link',
   text,
   className,
+  id,
   icon,
+  isIconRotated,
   style,
+  iconStyles,
 }: IButton) => {
   const buttonClassName = classNames(styles.default, className, {
     [styles.outlinedWithTint]: variant === 'outlinedWithTint',
@@ -21,7 +25,12 @@ const Button = ({
   const renderIcon = () => {
     switch (icon) {
       case 'cross':
-        return <span>+</span>;
+        return (
+          <Plus
+            className={`${isIconRotated ? styles.rotateIcon : ''}`}
+            style={iconStyles}
+          />
+        );
       case 'minus':
         return <span>—</span>;
 
@@ -37,6 +46,7 @@ const Button = ({
           onClick={onClick}
           href={to || ''}
           className={buttonClassName}
+          id={id}
           style={style}
         >
           {text}
@@ -45,7 +55,12 @@ const Button = ({
       );
     case 'button':
       return (
-        <button onClick={onClick} className={buttonClassName} style={style}>
+        <button
+          onClick={onClick}
+          className={buttonClassName}
+          style={style}
+          id={id}
+        >
           {text}
           {icon && renderIcon()}
         </button>
