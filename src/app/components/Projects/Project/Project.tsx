@@ -30,9 +30,21 @@ const Project = ({ project, indx }: IProjectProps) => {
     },
   };
 
-  function updateStyles() {
+  const updateStyles = () => {
     setViewDetails(!viewDetails);
-  }
+  };
+
+  const detailsButtonStyles: IButton = {
+    className: !viewDetails ? styles.projectButton : styles.detailsButton,
+    id: `${project._id}-viewDetailsButton`,
+    onClick: () => updateStyles(),
+    variant: 'outlinedWithTint',
+    text: viewDetails ? 'Close' : 'Details',
+    icon: 'cross',
+    isIconRotated: viewDetails,
+    iconStyles: { transition: 'transform 0.3s ease' },
+    as: 'button',
+  };
 
   return (
     <div className={styles.container}>
@@ -45,22 +57,10 @@ const Project = ({ project, indx }: IProjectProps) => {
         priority
       />
 
-      <Button
-        className={`${
-          !viewDetails ? styles.projectButton : styles.detailsButton
-        }`}
-        id={`${project._id}-viewDetailsButton`}
-        onClick={() => updateStyles()}
-        variant='outlinedWithTint'
-        text={`${viewDetails ? 'Close' : 'Details'}`}
-        icon='cross'
-        isIconRotated={viewDetails}
-        iconStyles={{ transition: 'transform 0.3s ease' }}
-        as='button'
-      />
+      <Button {...detailsButtonStyles} />
 
       <div
-        className={`${!viewDetails ? styles.detailsWrapper : styles.view}`}
+        className={!viewDetails ? styles.detailsWrapper : styles.view}
         id={project._id}
       >
         <div className={styles.details}>
