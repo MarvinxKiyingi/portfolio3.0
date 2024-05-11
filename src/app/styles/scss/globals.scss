@@ -2,7 +2,6 @@
 @import '_mixins/typography';
 @import '_mixins/color';
 @import '_mixins/spacing';
-@import 'src/app/components/LogoMarquee/LogoMarquee.module.scss';
 @import 'src/app/components/Projects/Project/Project.module.scss';
 
 :root {
@@ -24,9 +23,6 @@
 
 html,
 body {
-  max-width: 100%;
-  overflow-x: hidden;
-  display: grid;
   scroll-behavior: smooth;
 }
 
@@ -34,10 +30,6 @@ html {
   background-color: var(--page-bg-color);
   color: var(--text-color-primary);
   font-size: var(--base-font-size);
-}
-
-body {
-  width: 100%;
 }
 
 svg {
@@ -75,4 +67,10 @@ a {
     opacity: 1;
     color: var(--text-color-secondary);
   }
+}
+
+.sticky {
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0px;
 }
