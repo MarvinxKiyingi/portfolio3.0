@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import { Syne, Plus_Jakarta_Sans } from 'next/font/google';
 import './styles/scss/globals.scss';
+import { GoogleAnalytics } from '@next/third-parties/google';
 
 const syne = Syne({ subsets: ['latin'], variable: '--font-syne' });
 const plusJakartaSans = Plus_Jakarta_Sans({
@@ -40,6 +41,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang='en' className={`${syne.variable} ${plusJakartaSans.className}`}>
+      <GoogleAnalytics gaId='G-G8HTHZCTS2' />
       <body>{children}</body>
     </html>
   );
