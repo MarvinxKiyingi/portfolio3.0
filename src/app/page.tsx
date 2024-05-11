@@ -28,18 +28,20 @@ export default async function Home() {
         </h1>
 
         <div className={styles.contactWrapper}>
-          <div className={styles.contactContainer}>
+          <div className={`sticky ${styles.contactContainer}`}>
             <span className={styles.dot} />
             <SocialLinks />
           </div>
         </div>
 
         <div className={`${styles.descriptionWrapper} body-tiny`}>
-          <PortableText value={descriptionRichTextBlocks} />
+          <div className={`sticky ${styles.descriptionContainer}`}>
+            <PortableText value={descriptionRichTextBlocks} />
+          </div>
         </div>
       </section>
 
-      <section className={styles.gridItem}>
+      <section className={`${styles.gridItem} ${styles.gridRowUnset}`}>
         <h2 className={`heading-h6 ${styles.workTitle}`}>
           Personal & Agency Contributions
         </h2>
