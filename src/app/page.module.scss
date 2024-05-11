@@ -61,6 +61,7 @@
   @include breakpoint(sm) {
     grid-column: 3 span / -1;
     grid-row: 1 / -1;
+    white-space: nowrap;
   }
   @include breakpoint(lg) {
   }
@@ -77,8 +78,11 @@
     @include breakpoint(sm) {
       align-items: center;
       flex-direction: row-reverse;
+      padding: var(--space-lg) 0;
+      gap: var(--space-md);
     }
-    @include breakpoint(lg) {
+    @include breakpoint(md) {
+      gap: var(--space-lg);
     }
 
     .dot {
@@ -119,6 +123,7 @@
   flex-direction: column;
   height: fit-content;
   top: var(--space-lg);
+  padding-bottom: var(--space-lg);
 }
 
 .workTitle {
