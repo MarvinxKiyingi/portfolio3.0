@@ -150,7 +150,6 @@
   }
 
   @include breakpoint(sm) {
-    padding-bottom: 0;
     grid-column: 6 / -1;
     grid-row: 6 span;
   }
