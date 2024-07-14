@@ -5,18 +5,13 @@ import { PortableText } from '@portabletext/react';
 import { IHome } from './home';
 import Link from 'next/link';
 import SocialLinks from './components/SocialLinks/SocialLinks';
-import { IWork } from './components/Projects';
-import OpenLink from './components/OpenLink/OpenLink';
 import Projects from './components/Projects/Projects';
+import AgencyWork from './components/AgencyWork';
 
 export default async function Home() {
   const home = await client.fetch<IHome[]>(`*[name == "Home"]`);
-  const agencyWork = await client.fetch<IAgencyWorkGallery>(
-    `*[name == "AgencyWork"][0]{blockList[0]{listOfAgencyWork[]->{...,tags[]->}}}`
-  );
   const { blockList } = home[0];
   const descriptionRichTextBlocks = blockList[0].richTextEditor;
-  const { listOfAgencyWork } = agencyWork.blockList;
 
   return (
     <main className={styles.wrapper}>
@@ -46,11 +41,7 @@ export default async function Home() {
           Personal & Agency Contributions
         </h2>
 
-        <ul className={`${styles.agencyWorkWrapper}`}>
-          {listOfAgencyWork?.map((work) => (
-            <OpenLink key={work._id} {...work} />
-          ))}
-        </ul>
+        <AgencyWork />
 
         <Projects />
       </section>

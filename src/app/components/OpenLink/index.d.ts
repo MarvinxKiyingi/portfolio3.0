@@ -7,6 +7,9 @@ type IListOfAgencyWork = {
   _createdAt: string;
   companyName: string;
 };
+type IOpenLink = IListOfAgencyWork & {
+  indx: number;
+};
 
 type IBlockList = {
   listOfAgencyWork: IListOfAgencyWork[];

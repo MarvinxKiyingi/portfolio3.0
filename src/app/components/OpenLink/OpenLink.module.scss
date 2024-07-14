@@ -3,6 +3,11 @@
 .wrapper {
   padding: 12.5px 0;
   list-style: none;
+  position: relative;
+  top: 0;
+  left: 100%;
+  width: 100%;
+  transition: left 0.5s ease;
 
   &:last-of-type {
     border-bottom: none;
@@ -27,6 +32,10 @@
     grid-template-columns: repeat(12, 1fr);
     gap: var(--space-xl);
   }
+}
+
+.slideIn {
+  left: 0;
 }
 
 .company {
