@@ -140,25 +140,3 @@
     font-size: clamp(1.25rem, 0.96vw, 1.75rem);
   }
 }
-
-.agencyWorkWrapper {
-  display: flex;
-  flex-direction: column;
-  grid-column: 2 / -1;
-  grid-row: 5 span;
-  padding-bottom: 28px;
-
-  ul {
-    display: flex;
-    flex-direction: column;
-    flex: 1;
-  }
-
-  @include breakpoint(sm) {
-    grid-column: 6 / -1;
-    grid-row: 6 span;
-  }
-  @include breakpoint(lg) {
-    grid-column: 3 span / -1;
-  }
-}

@@ -6,14 +6,27 @@
   opacity: var(--opacity);
   aspect-ratio: 4/5;
   flex: 1;
+  opacity: 0;
+  transition: opacity 0.5s ease-in-out;
+
+  .imageContainer {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    aspect-ratio: 4/5;
+    opacity: var(--opacity);
+
+    &.viewImage {
+      opacity: 1;
+    }
+  }
 
   img {
+    position: absolute;
     width: 100%;
-    height: auto;
-    aspect-ratio: 4/5;
+    height: 100%;
     object-fit: cover;
     border-radius: 10px;
-    opacity: var(--opacity);
   }
 
   .projectButton {
@@ -45,7 +58,7 @@
   }
 
   .detailsWrapper {
-    display: flex;
+    display: none;
     flex: 1;
     margin: var(--base-spacing);
     padding: var(--base-spacing);
@@ -58,7 +71,7 @@
     position: absolute;
     left: 0;
     top: 0;
-    transition: opacity 0.3s ease;
+    transition: opacity 0.3s ease-in-out;
 
     .details {
       display: flex;
@@ -114,6 +127,11 @@
 
   .view {
     @extend .detailsWrapper;
+    display: flex;
     opacity: 1;
   }
+}
+
+.containerView {
+  opacity: 1;
 }
