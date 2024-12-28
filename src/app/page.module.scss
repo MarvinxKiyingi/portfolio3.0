@@ -84,20 +84,6 @@
     @include breakpoint(md) {
       gap: var(--space-lg);
     }
-
-    .dot {
-      display: flex;
-      width: fit-content;
-      width: 14px;
-      height: 14px;
-      background: var(--text-color-primary);
-      border-radius: 50%;
-      aspect-ratio: 1/1;
-
-      @include breakpoint(lg) {
-        align-self: center;
-      }
-    }
   }
 }
 

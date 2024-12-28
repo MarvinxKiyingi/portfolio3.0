@@ -7,6 +7,7 @@ import Link from 'next/link';
 import SocialLinks from './components/SocialLinks/SocialLinks';
 import Projects from './components/Projects/Projects';
 import AgencyWork from './components/AgencyWork';
+import DarkModeToggle from './components/DarkModeToggle/DarkModeToggle';
 
 export default async function Home() {
   const home = await client.fetch<IHome[]>(`*[name == "Home"]`);
@@ -24,7 +25,7 @@ export default async function Home() {
 
         <div className={styles.contactWrapper}>
           <div className={`sticky ${styles.contactContainer}`}>
-            <span className={styles.dot} />
+            <DarkModeToggle />
             <SocialLinks />
           </div>
         </div>
