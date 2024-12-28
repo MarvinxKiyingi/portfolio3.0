@@ -20,6 +20,7 @@ const OpenLink = ({ href, companyName, indx }: IOpenLink) => {
         isViewVisible ? styles.slideIn : undefined
       } `}
       href={href}
+      target='_blank'
     >
       <li>
         {companyName}
