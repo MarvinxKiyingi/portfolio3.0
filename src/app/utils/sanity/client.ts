@@ -8,5 +8,6 @@ export const client = createClient({
   projectId,
   dataset,
   apiVersion,
-  useCdn: false,
+  // Use CDN in production (non-preview)
+  useCdn: dataset === 'production',
 });
