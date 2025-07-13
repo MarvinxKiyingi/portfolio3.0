@@ -54,6 +54,7 @@ export async function POST(request: NextRequest) {
     });
   } catch (err) {
     console.error('❌ Error in revalidation:', err);
+    console.error('❌ Error in revalidation:', err);
     return NextResponse.json(
       { message: 'Error revalidating' },
       { status: 500 }
