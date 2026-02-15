@@ -44,8 +44,15 @@ export default function BlockRenderer({
     path: `pageBuilder[_key=="${block._key}"]`,
   }).toString();
 
-  const Component =
-    BLOCK_COMPONENTS[block._type as keyof typeof BLOCK_COMPONENTS];
+  const Component = BLOCK_COMPONENTS[
+    block._type as keyof typeof BLOCK_COMPONENTS
+  ] as React.ComponentType<{
+    block: IBlockType;
+    index: number;
+    header?: HeaderQueryResult | null;
+    pageId: string;
+    pageType: string;
+  }> | undefined;
 
   if (!Component) {
     return (
@@ -65,7 +72,6 @@ export default function BlockRenderer({
       data-sanity={dataAttributes}
       className={`grid ${pageSlug === '/' && block._type == 'contributions' ? 'lg:overflow-hidden lg:scrollbar-hide' : ''}`}
     >
-      {/* @ts-expect-error - Dynamic component props are properly typed in individual components */}
       <Component
         block={block}
         index={index}
