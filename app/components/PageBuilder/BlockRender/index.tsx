@@ -66,7 +66,13 @@ export default function BlockRenderer({
       className={`grid ${pageSlug === '/' && block._type == 'contributions' ? 'lg:overflow-hidden lg:scrollbar-hide' : ''}`}
     >
       {/* @ts-expect-error - Dynamic component props are properly typed in individual components */}
-      <Component block={block} index={index} header={header} />
+      <Component
+        block={block}
+        index={index}
+        header={header}
+        pageId={pageId}
+        pageType={pageType}
+      />
     </div>
   );
 }
