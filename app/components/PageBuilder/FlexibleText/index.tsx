@@ -14,12 +14,12 @@ const FlexibleText = ({ block }: IFlexibleText) => {
 
   // Define grid classes based on flipLayout
   const titleClasses = flipLayout
-    ? 'col-span-full row-start-1 sm:col-start-5 sm:col-span-4 lg:col-start-9 lg:col-span-4'
-    : 'col-span-full row-start-1 sm:col-start-1 sm:col-span-4 lg:col-start-1 lg:col-span-4';
+    ? 'col-span-full sm:row-start-1 sm:col-start-5 sm:col-span-4 lg:col-start-9 lg:col-span-4'
+    : 'col-span-full sm:row-start-1 sm:col-start-1 sm:col-span-4 lg:col-start-1 lg:col-span-4';
 
   const paragraphClasses = flipLayout
-    ? 'col-span-full row-start-1 sm:col-start-1 sm:col-span-4 lg:col-start-1 lg:col-span-7'
-    : 'col-span-full row-start-1 sm:col-start-5 sm:col-span-4 lg:col-start-5 lg:col-span-7';
+    ? 'col-span-full sm:row-start-1 sm:col-start-1 sm:col-span-4 lg:col-start-1 lg:col-span-7'
+    : 'col-span-full sm:row-start-1 sm:col-start-5 sm:col-span-4 lg:col-start-5 lg:col-span-7';
 
   return (
     <section className="grid grid-cols-4 gap-5 sm:grid-cols-8 lg:grid-cols-12">
@@ -34,7 +34,7 @@ const FlexibleText = ({ block }: IFlexibleText) => {
       )}
       {paragraph && (
         <div className={paragraphClasses}>
-          <div className="text-scale-0 md:text-scale-1 text-light-600 dark:text-white/60 ">
+          <div className="text-scale-0 md:text-scale-1 md:px-4 text-light-600 dark:text-white/60">
             <RichText content={paragraph} />
           </div>
         </div>

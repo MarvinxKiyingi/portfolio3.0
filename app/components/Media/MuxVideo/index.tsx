@@ -1,12 +1,8 @@
-import {
-  useState,
-  useEffect,
-  useRef,
-  ComponentRef,
-  useMemo,
-  useCallback,
-} from 'react';
-import MuxPlayer from '@mux/mux-player-react';
+import { useEffect, useRef, ComponentRef, useMemo, useCallback } from 'react';
+import MuxPlayer, {
+  MinResolution,
+  RenditionOrder,
+} from '@mux/mux-player-react';
 import '@mux/mux-player';
 import '@mux/mux-player/themes/minimal';
 
@@ -22,14 +18,13 @@ type IMuxVideo = {
   videoObjectFitCover?: boolean;
 };
 
-// Constants moved outside component to prevent recreation
+const DEFAULT_ASPECT_RATIO = '16/9';
+
 const INTERSECTION_OPTIONS = {
   root: null,
   rootMargin: '50px',
   threshold: 0.5,
 } as const;
-
-const DEFAULT_ASPECT_RATIO = '16/9';
 
 // CSS styles object moved outside to prevent recreation
 const HIDDEN_CONTROLS_STYLES = {
@@ -59,6 +54,7 @@ const HIDDEN_CONTROLS_STYLES = {
   '--media-background-color': 'transparent',
   '--media-object-fit': 'cover',
 } as const;
+
 const OBJECT_FIT_COVER_STYLES = {
   ...HIDDEN_CONTROLS_STYLES,
   '--media-object-fit': 'cover',
@@ -75,21 +71,20 @@ export default function MuxVideo({
   loop = true,
   videoObjectFitCover = false,
 }: IMuxVideo) {
-  const [isMounted, setIsMounted] = useState(false);
   const videoRef = useRef<ComponentRef<typeof MuxPlayer>>(null);
 
-  // Memoize aspect ratio calculation
+  // "16:9" -> "16/9"
   const finalAspectRatio = useMemo(() => {
     if (!aspectRatio) return DEFAULT_ASPECT_RATIO;
     return aspectRatio.replace(':', '/');
   }, [aspectRatio]);
 
-  // Memoize loop value conversion
   const loopValue = useMemo(() => {
     return (loop ? 'true' : 'false') as unknown as boolean;
   }, [loop]);
 
-  // Memoize player styles
+  // MuxPlayer owns its aspect ratio — this is the simplest way to avoid layout shift.
+  // The player renders at the correct height immediately via the aspect-ratio style.
   const playerStyles = useMemo(
     () => ({
       aspectRatio: finalAspectRatio,
@@ -99,7 +94,6 @@ export default function MuxVideo({
     [finalAspectRatio, videoObjectFitCover]
   );
 
-  // Memoize metadata
   const metadata = useMemo(
     () => ({
       video_id: playbackId,
@@ -108,19 +102,20 @@ export default function MuxVideo({
     [playbackId]
   );
 
-  // Optimized intersection observer callback
+  // Play/pause based on visibility — no mounting/unmounting
   const handleIntersection = useCallback(
     (entries: IntersectionObserverEntry[]) => {
       const entry = entries[0];
       const player = videoRef.current;
-
       if (!player) return;
 
       if (entry.isIntersecting) {
-        // Use requestAnimationFrame for better performance than setTimeout
-        requestAnimationFrame(() => {
-          player.play?.();
-        });
+        const p = player.play?.();
+        if (p !== undefined) {
+          p.catch(() => {
+            // NotAllowedError: browser requires user gesture; ignore
+          });
+        }
       } else {
         player.pause?.();
       }
@@ -129,41 +124,32 @@ export default function MuxVideo({
   );
 
   useEffect(() => {
-    setIsMounted(true);
+    const element = videoRef.current;
+    if (!element) return;
 
     const observer = new IntersectionObserver(
       handleIntersection,
       INTERSECTION_OPTIONS
     );
-    const element = videoRef.current;
-
-    if (element) {
-      observer.observe(element);
-    }
-
-    return () => {
-      if (element) {
-        observer.unobserve(element);
-      }
-    };
+    observer.observe(element);
+    return () => observer.unobserve(element);
   }, [handleIntersection]);
-
-  if (!isMounted) {
-    return null;
-  }
 
   return (
     <MuxPlayer
       ref={videoRef}
-      className={`mux-player-ui-none ${className}`}
+      className={`mux-player-ui-none ${className ?? ''}`}
       playbackId={playbackId}
       thumbnailTime={thumbnailTime}
       poster={poster}
       muted={muted}
       autoPlay={autoPlay}
-      loop={loopValue} // String format required due to React 19 + Next.js 15 + Mux Player React bug
+      preload="auto"
+      loop={loopValue}
       style={playerStyles as React.CSSProperties}
       metadata={metadata}
+      renditionOrder={RenditionOrder.DESCENDING}
+      minResolution={MinResolution.noLessThan720p}
     />
   );
 }

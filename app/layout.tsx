@@ -1,10 +1,6 @@
 import type { Viewport } from 'next';
 import { Syne, Plus_Jakarta_Sans } from 'next/font/google';
 import './globals.css';
-import { SanityLive } from '@/sanity/lib/live';
-import { draftMode } from 'next/headers';
-import { VisualEditing } from 'next-sanity';
-import { DisableDraftMode } from './components/DisableDraftMode';
 import { ThemeProvider } from './components/ThemeProvider';
 import { ThemeScript } from './components/ThemeScript';
 import { Analytics } from '@vercel/analytics/next';
@@ -25,7 +21,6 @@ export default async function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const { isEnabled: isDraftMode } = await draftMode();
   return (
     <html
       lang='en'
@@ -35,17 +30,8 @@ export default async function RootLayout({
       <body className='bg-light-500 text-light-900 dark:bg-dark-500 dark:text-white'>
         <ThemeScript />
         <ThemeProvider>
-          {isDraftMode && (
-            <>
-              <VisualEditing />
-              <DisableDraftMode />
-            </>
-          )}
-          <SanityLive />
-          <>
-            {children}
-            <Analytics />
-          </>
+          {children}
+          <Analytics />
         </ThemeProvider>
       </body>
     </html>
