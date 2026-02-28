@@ -6,7 +6,7 @@ A guide to diagnosing and fixing the issue where the Sanity Presentation tool ca
 
 ## The Problem
 
-- **Symptom:** When editing content in Sanity Studio’s Presentation tool, the preview iframe (or the whole page) reloads on every change.
+- **Symptom:** When editing content in Sanity Studio's Presentation tool, the preview iframe (or the whole page) reloads on every change.
 - **Expected:** Only the changed content updates in place via live preview; no full reloads.
 
 ---
@@ -19,10 +19,10 @@ There are **three main causes**. Any one can trigger the bad behavior; often mul
 
 **Cause:** `SanityLive` and/or `VisualEditing` are rendered in a **root layout** that also wraps the embedded Sanity Studio route (e.g. `/studio`).
 
-**Why it breaks:**  
-Sanity’s docs explicitly warn: *“Including SanityLive in your studio route can cause unexpected reloads.”* When these components run inside the studio route, they react to Studio events and trigger refreshes/revalidations that cause full reloads.
+**Why it breaks:**
+Sanity's docs explicitly warn: *"Including SanityLive in your studio route can cause unexpected reloads."* When these components run inside the studio route, they react to Studio events and trigger refreshes/revalidations that cause full reloads.
 
-**How to check:**  
+**How to check:**
 Is your Studio mounted under a path like `/studio` or `/admin`, and does your **root** `app/layout.tsx` (or equivalent) render `<SanityLive />` or `<VisualEditing />`? If yes, the studio is wrapped by them.
 
 ---
@@ -34,11 +34,11 @@ Is your Studio mounted under a path like `/studio` or `/admin`, and does your **
 - Bugs in the Presentation tool (e.g. full iframe refresh on data changes).
 - Overly aggressive or incorrect revalidation behavior.
 
-**Why it breaks:**  
-Core fixes live in `sanity` (e.g. Studio v3.64.1+ for iframe refresh) and in `next-sanity` (e.g. v11+ for better refresh strategy when live preview is enabled). Old versions don’t get these fixes.
+**Why it breaks:**
+Core fixes live in `sanity` (e.g. Studio v3.64.1+ for iframe refresh) and in `next-sanity` (e.g. v11+ for better refresh strategy when live preview is enabled). Old versions don't get these fixes.
 
-**How to check:**  
-Compare your versions to the minimum recommended set below (see [Package versions](#package-versions)).
+**How to check:**
+Compare your versions to the minimum recommended set below (see [Package versions](#fix-2-upgrade-sanity-packages)).
 
 ---
 
@@ -46,11 +46,11 @@ Compare your versions to the minimum recommended set below (see [Package version
 
 **Cause:** `VisualEditing` is used **without** a custom refresh strategy, and your app is **not** using the Live Content API in a way that next-sanity can detect (e.g. no `SanityLive` + `sanityFetch`).
 
-**Why it breaks:**  
-When next-sanity doesn’t detect “live preview” (e.g. loaders / `SanityLive`), `VisualEditing`’s default refresh calls `revalidatePath("/", "layout")`, which revalidates the **entire root layout** and purges the data cache on every mutation — effectively a full reload.
+**Why it breaks:**
+When next-sanity doesn't detect "live preview" (e.g. loaders / `SanityLive`), `VisualEditing`'s default refresh calls `revalidatePath("/", "layout")`, which revalidates the **entire root layout** and purges the data cache on every mutation — effectively a full reload.
 
-**How to check:**  
-You use `<VisualEditing />` with no `refresh` prop, and you either don’t use `SanityLive` + `sanityFetch`, or they’re not set up so that next-sanity can detect live preview (e.g. wrong layout placement).
+**How to check:**
+You use `<VisualEditing />` with no `refresh` prop, and you either don't use `SanityLive` + `sanityFetch`, or they're not set up so that next-sanity can detect live preview (e.g. wrong layout placement).
 
 ---
 
@@ -67,7 +67,7 @@ You use `<VisualEditing />` with no `refresh` prop, and you either don’t use `
 3. **Add a layout** inside the route group that renders:
    - `SanityLive`
    - `VisualEditing` (when draft mode is enabled)
-   - Any “disable draft mode” UI.
+   - Any "disable draft mode" UI.
 4. **Keep the root layout** minimal: HTML, fonts, theme, analytics — **no** Sanity preview components.
 
 **Example structure (Next.js App Router):**
@@ -158,7 +158,7 @@ Other imports (`createClient`, `defineQuery`, `createDataAttribute`, etc.) can s
 
 ---
 
-### Fix 3: Use Live Content API So VisualEditing Doesn’t Fall Back to Full Revalidation
+### Fix 3: Use Live Content API So VisualEditing Doesn't Fall Back to Full Revalidation
 
 When next-sanity detects that live preview is in use (e.g. `SanityLive` + `sanityFetch` from `defineLive`), `VisualEditing` uses a lighter refresh strategy and does **not** call `revalidatePath("/", "layout")` on every mutation.
 
@@ -183,8 +183,8 @@ export const { sanityFetch, SanityLive } = defineLive({
 });
 ```
 
-**Optional: custom refresh (if you still see full reloads)**  
-If you are **not** using `SanityLive`/`sanityFetch`, or still see full reloads, you can override `VisualEditing`’s refresh to avoid revalidating the whole layout (e.g. use a tag or path):
+**Optional: custom refresh (if you still see full reloads)**
+If you are **not** using `SanityLive`/`sanityFetch`, or still see full reloads, you can override `VisualEditing`'s refresh to avoid revalidating the whole layout (e.g. use a tag or path):
 
 ```tsx
 <VisualEditing
@@ -197,6 +197,94 @@ If you are **not** using `SanityLive`/`sanityFetch`, or still see full reloads, 
 
 ---
 
+## DisableDraftMode: React Version Matters
+
+The `DisableDraftMode` component needs to detect whether it is being rendered inside the Presentation tool's iframe (to hide itself) or in the user's browser directly (to show the disable button). The correct implementation depends on which React version the project uses.
+
+### Why the React version matters
+
+The `useIsPresentationTool()` hook from `next-sanity/hooks` relies on `useSyncExternalStore` to share an `environment` variable between the `SanityLive` client component and `DisableDraftMode`. `SanityLive` sets the environment (e.g. `"live"`, `"presentation-iframe"`), and `useIsPresentationTool` reads it.
+
+In **React 18**, the cross-component store update from `SanityLive` can fail to propagate to `DisableDraftMode` under Next.js App Router's Suspense boundaries. The `environment` stays stuck at its initial value (`"checking"`), `useIsPresentationTool()` returns `null` forever, and the button never appears.
+
+**React 19** fixes this — `useSyncExternalStore` reliably propagates updates across components regardless of Suspense boundaries.
+
+### React 19 (recommended)
+
+Use the `useIsPresentationTool()` hook. It handles all edge cases cleanly:
+
+```tsx
+'use client';
+
+import { useTransition } from 'react';
+import { useIsPresentationTool } from 'next-sanity/hooks';
+import { disableDraftMode } from '@/app/actions';
+
+export function DisableDraftMode() {
+  const [pending, startTransition] = useTransition();
+  const isPresentationTool = useIsPresentationTool();
+
+  // null = still checking, true = inside Presentation tool
+  if (isPresentationTool || isPresentationTool === null) {
+    return null;
+  }
+
+  const disable = () =>
+    startTransition(() => disableDraftMode());
+
+  return (
+    <div className="fixed bottom-6 right-6 z-[9999] ...">
+      {pending ? 'Disabling draft mode...' : 'Sanity draft mode is enabled'}
+      <button type="button" onClick={disable}>Disable</button>
+    </div>
+  );
+}
+```
+
+### React 18 (fallback)
+
+Do **not** use `useIsPresentationTool()`. Instead, check `window.self === window.top` directly — the Presentation tool loads the site in an iframe, so this reliably detects it:
+
+```tsx
+'use client';
+
+import { useTransition, useState, useEffect } from 'react';
+import { disableDraftMode } from '@/app/actions';
+
+export function DisableDraftMode() {
+  const [pending, startTransition] = useTransition();
+  const [show, setShow] = useState(false);
+
+  useEffect(() => {
+    // true when NOT inside an iframe (i.e. not in the Presentation tool)
+    setShow(window.self === window.top);
+  }, []);
+
+  if (!show) return null;
+
+  const disable = () =>
+    startTransition(() => disableDraftMode());
+
+  return (
+    <div className="fixed bottom-6 right-6 z-[9999] ...">
+      {pending ? 'Disabling draft mode...' : 'Sanity draft mode is enabled'}
+      <button type="button" onClick={disable}>Disable</button>
+    </div>
+  );
+}
+```
+
+**Key differences:**
+
+| | React 19 | React 18 |
+|---|---|---|
+| **Detection method** | `useIsPresentationTool()` from `next-sanity/hooks` | `window.self === window.top` (DOM check) |
+| **Why** | Hook works reliably with React 19's `useSyncExternalStore` | Hook stays stuck at `null` due to React 18 Suspense limitations |
+| **Starts hidden** | Yes (`null` while checking) | Yes (`useState(false)`) |
+| **Resize-safe** | Yes | Yes (runs once on mount, no resize listener) |
+
+---
+
 ## Configuration Checklist
 
 Use this to verify setup in a new project or after applying the fixes.
@@ -206,8 +294,8 @@ Use this to verify setup in a new project or after applying the fixes.
   - [ ] `SanityLive` and `VisualEditing` live in a layout that only wraps content/preview routes (e.g. via a route group).
 
 - [ ] **Packages**
-  - [ ] `sanity` ≥ 4.22.0 (or latest v4).
-  - [ ] `next-sanity` ≥ 11.6.12 and imports use v11 paths (`next-sanity/visual-editing`, `next-sanity/live`).
+  - [ ] `sanity` >= 4.22.0 (or latest v4).
+  - [ ] `next-sanity` >= 11.6.12 and imports use v11 paths (`next-sanity/visual-editing`, `next-sanity/live`).
   - [ ] `@sanity/client` and other `@sanity/*` packages aligned with the versions above.
 
 - [ ] **Live preview**
@@ -225,7 +313,9 @@ Use this to verify setup in a new project or after applying the fixes.
   - [ ] Optional: custom `refresh` with `revalidateTag` if you are not using `SanityLive`/`sanityFetch` or still see full reloads.
 
 - [ ] **Disable draft mode UI**
-  - [ ] Uses `useIsPresentationTool()` from `next-sanity/hooks` so the “Disable draft mode” button is hidden inside the Presentation tool (avoids duplicate UI and confusion).
+  - [ ] React 19: uses `useIsPresentationTool()` from `next-sanity/hooks`.
+  - [ ] React 18: uses `window.self === window.top` in a `useEffect`.
+  - [ ] Button is hidden inside the Presentation tool iframe.
 
 ---
 
@@ -234,7 +324,7 @@ Use this to verify setup in a new project or after applying the fixes.
 | Cause | Fix |
 |-------|-----|
 | SanityLive/VisualEditing in root layout wrapping `/studio` | Move them into a content-only layout (e.g. route group `(site)`). |
-| Old sanity / next-sanity | Upgrade to sanity ≥4.22, next-sanity ≥11.6, correct v11 imports. |
+| Old sanity / next-sanity | Upgrade to sanity >=4.22, next-sanity >=11.6, correct v11 imports. |
 | VisualEditing default refresh | Use SanityLive + sanityFetch so next-sanity uses the non-aggressive path; or set a custom `refresh` (e.g. `revalidateTag('preview')`). |
 
 ---
